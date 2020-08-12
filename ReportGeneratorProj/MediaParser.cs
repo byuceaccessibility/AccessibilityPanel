@@ -98,7 +98,7 @@
                     continue;
                 }
                 if (link.GetClasses().Contains("video_link"))
-                {   //See if it is an embded canvas video link
+                {   //See if it is an embedded canvas video link
                     lock (Data)
                     {
                         Data.Add(new PageMediaData(PageDocument.Location,
