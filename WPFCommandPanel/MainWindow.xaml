@@ -1,0 +1,99 @@
+﻿<Window x:Class="WPFCommandPanel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCommandPanel"
+        mc:Ignorable="d"
+        Title="A11yControlPanel v3.01" 
+        Height="1000" 
+        Width="2000"
+        Background="Black"
+        Style="{StaticResource CustomWindowStyle}"
+        AllowsTransparency="False"
+        >
+    <Window.Resources>
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="Gray"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF2B505B"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0 0 2 0"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0"
+
+                  VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Click="SwitchA11yReview"
+                        >
+                    A11yReview
+                </Button>
+                <Button Grid.Column="1"
+                        Click="SwitchA11yRepair">
+                    A11yRepair
+                </Button>
+                <Button Grid.Column="2"
+                        Click="SwitchOptions">
+                    Options
+                </Button>
+                <!-- <Button Grid.Column="3"
+                        Click="SwitchA11yViewer">
+                    A11yViewer
+                </Button> -->
+                <Grid Grid.Column="3" 
+                              Name="RadioButtonGroup">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton VerticalAlignment="Center" 
+                                     Grid.Column="0" 
+                                     GroupName="Domain" 
+                                     Content="BYU Online"
+                                     Checked="RadioButton_Checked"/>
+                    <RadioButton VerticalAlignment="Center" 
+                                        Grid.Column="1"    
+                                        GroupName="Domain" 
+                                        Content="BYU IS Test"
+                                        Checked="RadioButton_Checked"/>
+                    <RadioButton VerticalAlignment="Center" 
+                                     Grid.Column="2" 
+                                     GroupName="Domain" 
+                                     Content="BYU Master Courses"
+                                     Checked="RadioButton_Checked"/>
+                    <RadioButton VerticalAlignment="Center" 
+                                     Grid.Column="3" 
+                                     GroupName="Domain" 
+                                     Content="Directory"
+                                     Checked="RadioButton_Checked"/>
+                </Grid>
+                
+            </Grid>
+        </GroupBox>
+        <Frame Grid.Row="1" Name="ShowPage" 
+           NavigationUIVisibility="Hidden"/>
+    </Grid>
+
+</Window>

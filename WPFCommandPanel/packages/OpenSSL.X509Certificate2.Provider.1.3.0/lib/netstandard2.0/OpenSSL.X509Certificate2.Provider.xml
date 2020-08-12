@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenSSL.X509Certificate2.Provider</name>
+    </assembly>
+    <members>
+        <member name="T:OpenSSL.X509Certificate2Provider.BaseCertificateProvider">
+            <summary>
+            BaseCertificateProvider to parse OpenSSL public and private key components. Based on http://www.jensign.com/opensslkey/opensslkey.cs
+            </summary>
+        </member>
+        <member name="M:OpenSSL.X509Certificate2Provider.BaseCertificateProvider.GetPublicKeyBytes(System.String)">
+            <summary>
+            GetPublicKeyBytes
+            </summary>
+            <param name="publicText">The certificate or public key text.</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="T:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider">
+            <summary>
+            CertificateFromFileProvider
+            </summary>
+        </member>
+        <member name="M:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider.#ctor(System.String,System.String,System.Security.SecureString)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider"/> class.
+            </summary>
+            <param name="certificateText">The certificate or public key text.</param>
+            <param name="privateKeyText">The private (rsa) key text.</param>
+            <param name="securePassword">The optional securePassword to decrypt the private key.</param>
+        </member>
+        <member name="M:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider.#ctor(System.String,System.String,System.Boolean,System.Security.SecureString)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider"/> class.
+            </summary>
+            <param name="certificateText">The certificate or public key text.</param>
+            <param name="privateKeyText">The private (rsa) key text.</param>
+            <param name="useKeyContainer">Store the private key in a key container. <see href="https://docs.microsoft.com/en-us/dotnet/standard/security/how-to-store-asymmetric-keys-in-a-key-container" /></param>
+            <param name="securePassword">The optional securePassword to decrypt the private key.</param>
+            <exception cref="T:System.ArgumentNullException">certificateText or privateKeyText</exception>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider.Certificate">
+            <summary>
+            Gets the generated X509Certificate2 object.
+            </summary>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider.PrivateKey">
+            <summary>
+            Gets the PrivateKey object.
+            </summary>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.CertificateFromFileProvider.PublicKey">
+            <summary>
+            Gets the PublicKey object.
+            </summary>
+        </member>
+        <member name="T:OpenSSL.X509Certificate2Provider.ICertificateProvider">
+            <summary>
+            ICertificateProvider
+            </summary>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.ICertificateProvider.Certificate">
+            <summary>
+            Gets the generated X509Certificate2 object.
+            </summary>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.ICertificateProvider.PrivateKey">
+            <summary>
+            Gets the PrivateKey object.
+            </summary>
+        </member>
+        <member name="P:OpenSSL.X509Certificate2Provider.ICertificateProvider.PublicKey">
+            <summary>
+            Gets the PublicKey object.
+            </summary>
+        </member>
+    </members>
+</doc>
