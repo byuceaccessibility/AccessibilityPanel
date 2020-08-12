@@ -52,3 +52,25 @@ M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanel
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators.exe
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators.pdb
 C:\Users\Nate\Documents\GitHub\A11yPanelCode\ReportGeneratorProj\obj\Release\ReportGenerators.csprojAssemblyReference.cache
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.csprojAssemblyReference.cache
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.csproj.CopyComplete
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.exe
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.pdb
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\tidy.x64.dll
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\tidy.x86.dll
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\ReportGenerators.exe.config
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\ReportGenerators.exe
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\ReportGenerators.pdb
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\A11yParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\CanvasApi.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\CourseDataStructures.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\CreateExcelReport.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\LinkParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\MediaParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\PanelOptions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\RGeneratorBase.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\SeleniumExtentions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\StringExtentions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\VideoParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\App.config
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGeneratorProj\packages.config

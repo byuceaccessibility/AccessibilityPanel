@@ -79,3 +79,73 @@ M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanel
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel.exe.config
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel.exe
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel.pdb
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csprojAssemblyReference.cache
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yRepair.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yViewer.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\CommandPanel.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\DraggablePopup.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\LoadingSpinner.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\MainWindow.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\OptionsPage.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\App.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_Content.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_MarkupCompile.cache
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_MarkupCompile.lref
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\App.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yRepair.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yViewer.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\CommandPanel.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\DraggablePopup.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\LoadingSpinner.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\MainWindow.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\OptionsPage.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\Themes\Generic.baml
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.g.resources
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.Properties.Resources.resources
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csproj.GenerateResource.cache
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csproj.CopyComplete
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.exe
+C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.pdb
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\tidy.x64.dll
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\tidy.x86.dll
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WPFCommandPanel.exe.config
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WPFCommandPanel.exe
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WPFCommandPanel.pdb
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\A11yParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\CanvasApi.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\CourseDataStructures.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\CreateExcelReport.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\LinkParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\MediaParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\PanelOptions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\RGeneratorBase.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\SeleniumExtentions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\StringExtentions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\VideoParser.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\App.config
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\packages.config
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\A11yData.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\A11yRepair.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\A11yViewer.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\AsyncObservCollect.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\BrowserEvents.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\ControlDoubleClickBehavior.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\DatagridExtensions.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\DraggablePopup.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\FileWatcherEvents.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\GenReportEvents.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\LoadingSpinner.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\MyTab.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\OptionsPage.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\ShowSystemMenuBehavior.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\SystemMenuManager.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WindowResizeBehavior.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WindowMaximizeCommand.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WindowMinimizeCommand.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WindowCloseCommand.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WindowDragBehavior.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\WPFControlWriter.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\App.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\CommandPanel.xaml.cs
+M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\WPFCommandPanel\MainWindow.xaml.cs
