@@ -454,10 +454,10 @@ namespace WPFCommandPanel
                         curPage.Doc.DocumentNode.OuterHtml,
                         question_id,
                         answer_id,
-                        comment
-                        //out bool saved
+                        comment,
+                        out bool saved
                         );
-                if(false) //FIXME Saved bool
+                if(!saved)
                 {
                     System.Windows.MessageBox.Show("Failed to save item to canvas");
                 }

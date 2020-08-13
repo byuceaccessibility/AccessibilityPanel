@@ -56,7 +56,7 @@ namespace ReportGenerators
                 }
             }
 
-            public ItemInfo SaveContent(int course_id, string new_html, string question_id, string answer_id, bool comment)
+            public ItemInfo SaveContent(int course_id, string new_html, string question_id, string answer_id, bool comment, out bool saved)
             {
                 switch (type)
                 {
@@ -102,6 +102,7 @@ namespace ReportGenerators
                     default:
                         break;
                 }
+                saved = true;
                 return this;
             }
         }
