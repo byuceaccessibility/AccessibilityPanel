@@ -58,6 +58,9 @@ ipch/
 *.vsp
 *.vspx
 
+# Visual Studio Code
+.vs/
+
 # Guidance Automation Toolkit
 *.gpState
 
