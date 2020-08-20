@@ -210,8 +210,34 @@
             foreach (var image in image_list)
             {
                 var alt = image.Attributes["alt"]?.Value;
+                var src = image.Attributes["src"]?.Value;
+                var parentClass = image.ParentNode.Attributes["class"]?.Value;
                 //Get the alt text
-                if (String.IsNullOrEmpty(alt))
+                if ((new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src)) && (String.IsNullOrEmpty(alt)))
+                {   //Check if empty alt text first is an banner as described in the filepath
+                    lock (Data)
+                    {
+
+                    }
+                }
+                else if (null != parentClass)
+                {   //If the image has a parent node with a class
+                    if (new Regex("(?i)HeaderGraphic").IsMatch(parentClass))
+                    {   //Check if Parent node is classed as a "Header Graphic"
+                        lock (Data)
+                        {
+
+                        }
+                    }
+                }
+                else if ((new Regex("(?i)Lesson\\d*?(.jpg|.png|.svg)").IsMatch(src)))
+                {   //Check if src data is just a lesson's banner
+                    lock (Data)
+                    {
+                        
+                    }
+                }
+                else if (String.IsNullOrEmpty(alt))
                 {   //Empty alt text should be manually checked for decortive qualities
                     lock (Data)
                     {
