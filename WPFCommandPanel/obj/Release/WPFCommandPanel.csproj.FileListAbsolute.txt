@@ -144,3 +144,32 @@ M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanel
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\App.xaml.cs
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\CommandPanel.xaml.cs
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\MainWindow.xaml.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csprojAssemblyReference.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yRepair.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yViewer.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\CommandPanel.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\DraggablePopup.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\LoadingSpinner.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\MainWindow.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\OptionsPage.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\App.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_Content.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_MarkupCompile.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel_MarkupCompile.lref
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\App.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yRepair.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\A11yViewer.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\CommandPanel.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\DraggablePopup.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\LoadingSpinner.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\MainWindow.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\OptionsPage.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\Themes\Generic.baml
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.g.resources
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.Properties.Resources.resources
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csproj.GenerateResource.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csproj.CoreCompileInputs.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.csproj.CopyComplete
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.exe
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Release\WPFCommandPanel.pdb
