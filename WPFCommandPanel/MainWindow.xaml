@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFCommandPanel"
         mc:Ignorable="d"
-        Title="A11yControlPanel v4.01" 
+        Title="A11yControlPanel v4.02" 
         Height="1000" 
         Width="2000"
         Background="Black"

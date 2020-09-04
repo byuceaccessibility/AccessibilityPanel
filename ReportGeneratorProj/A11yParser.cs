@@ -209,33 +209,26 @@
             //Loop through all images
             foreach (var image in image_list)
             {
-                var alt = image.Attributes["alt"]?.Value;
-                var src = image.Attributes["src"]?.Value;
-                var parentClass = image.ParentNode.Attributes["class"]?.Value;
-                //Get the alt text
+                var alt = image.Attributes["alt"]?.Value; //Get Alt attribute and set as "alt"
+                var src = image.Attributes["src"]?.Value; //Get SRC attribute and set as "src"
+                if (String.IsNullOrEmpty(src)) src = "";
+                var parentClass = image.ParentNode.Attributes["class"]?.Value; //Get Parent Node and identify class as "parentClass"
+                if (String.IsNullOrEmpty(parentClass)) parentClass = "";
+                //Sort Image issues
                 if ((new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src)) && (String.IsNullOrEmpty(alt)))
                 {   //Check if empty alt text first is an banner as described in the filepath
-                    lock (Data)
-                    {
-
-                    }
+                    //Ignore
                 }
                 else if (null != parentClass)
                 {   //If the image has a parent node with a class
-                    if (new Regex("(?i)HeaderGraphic").IsMatch(parentClass))
+                    if (new Regex("HeaderGraphic", RegexOptions.IgnoreCase).IsMatch(parentClass))
                     {   //Check if Parent node is classed as a "Header Graphic"
-                        lock (Data)
-                        {
-
-                        }
+                        //Ignore
                     }
                 }
-                else if ((new Regex("(?i)Lesson\\d*?(.jpg|.png|.svg)").IsMatch(src)))
+                else if ((new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src)))
                 {   //Check if src data is just a lesson's banner
-                    lock (Data)
-                    {
-                        
-                    }
+                    //Ignore
                 }
                 else if (String.IsNullOrEmpty(alt))
                 {   //Empty alt text should be manually checked for decortive qualities
