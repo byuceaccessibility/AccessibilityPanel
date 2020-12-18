@@ -20,6 +20,7 @@ namespace My
         public Dictionary<string, string> BYUOnlineCreds { get; set; }
         public Dictionary<string, string> BYUISTestCreds { get; set; }
         public Dictionary<string, string> BYUMasterCoursesCreds { get; set; }
+        public Dictionary<string, string> BYUOnlineHighSchoolCreds { get; set; }
         public Dictionary<string, string> ByuCred { get; set; }
         public string ReportPath { get; set; }
         public string PowershellScriptDir { get; set; }

@@ -204,41 +204,57 @@ namespace ReportGenerators
                                 PageInfoItem[item.url].quiz = quiz;
                                 PageInfoItem[item.url].quiz_questions = new List<CanvasQuizQuesiton>();
                                 try
-                                { //Quizes require more as we need to gather question and answer info
+                                {
+                                    //Quizes require more as we need to gather question and answer info
                                     //Again may be able to see basic quiz but not authorized for quiz questions, this the try block.
                                     //Loop through all questions for specific quiz
                                     int question_number = 0;
-                                    foreach (CanvasQuizQuesiton question in CanvasApi.GetCanvasQuizQuesitons(course_id, item.content_id))
+                                    foreach (CanvasQuizQuesiton question in CanvasApi.GetCanvasQuizQuesitons(course_id,
+                                        item.content_id))
                                     {
                                         PageInfoItem[item.url].quiz_questions.Add(question);
                                         Dictionary<string, string> LAndB = new Dictionary<string, string>();
-                                        LAndB[item.url+$"?question_num={question_number}"] = question.question_text; 
-                                        lock(PageHtmlList)
+                                        LAndB[item.url + $"?question_num={question_number}"] = question.question_text;
+                                        lock (PageHtmlList)
                                         {
                                             PageHtmlList.Add(LAndB);
                                         }
+
                                         int answer_num = 0;
                                         int answer_comment_num = 0;
                                         //Loop through all answers in the quiz
                                         foreach (CanvasQuizQuestionAnswers answer in question.answers)
                                         {
                                             Dictionary<string, string> answerDict = new Dictionary<string, string>();
-                                            answerDict[item.url + $"?question_num={question_number}&answer_num={answer_num}"] = "\n" + answer?.html;
+                                            answerDict[
+                                                    item.url +
+                                                    $"?question_num={question_number}&answer_num={answer_num}"] =
+                                                "\n" + answer?.html;
                                             lock (PageHtmlList)
                                             {
                                                 PageHtmlList.Add(answerDict);
                                             }
+
                                             Dictionary<string, string> commentDict = new Dictionary<string, string>();
-                                            commentDict[item.url + $"?question_num={question_number}&answer_comment={answer_comment_num}"] = "\n" + answer?.comments_html;
+                                            commentDict[
+                                                    item.url +
+                                                    $"?question_num={question_number}&answer_comment={answer_comment_num}"]
+                                                = "\n" + answer?.comments_html;
                                             lock (PageHtmlList)
                                             {
                                                 PageHtmlList.Add(commentDict);
                                             }
+
                                             answer_comment_num++;
                                             answer_num++;
                                         }
+
                                         question_number++;
                                     }
+                                }
+                                catch (NullReferenceException)
+                                {
+                                    Console.WriteLine("Can not search this quiz. Skipping...");
                                 }
                                 catch (Exception e)
                                 {

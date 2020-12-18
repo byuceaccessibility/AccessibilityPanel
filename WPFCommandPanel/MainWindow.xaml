@@ -67,6 +67,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <RadioButton VerticalAlignment="Center" 
                                      Grid.Column="0" 
@@ -83,8 +84,13 @@
                                      GroupName="Domain" 
                                      Content="BYU Master Courses"
                                      Checked="RadioButton_Checked"/>
+                    <RadioButton VerticalAlignment="Center"
+                                     Grid.Column="3"
+                                     GroupName="Domain" 
+                                     Content="BYU Online High School"
+                                     Checked="RadioButton_Checked"/>
                     <RadioButton VerticalAlignment="Center" 
-                                     Grid.Column="3" 
+                                     Grid.Column="4" 
                                      GroupName="Domain" 
                                      Content="Directory"
                                      Checked="RadioButton_Checked"/>

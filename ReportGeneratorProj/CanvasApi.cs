@@ -130,6 +130,10 @@ namespace My.CanvasApi
                     token = Options.BYUMasterCoursesCreds["Token"];
                     domain = Options.BYUMasterCoursesCreds["BaseUri"];
                     break;
+                case "BYU Online High School":
+                    token = Options.BYUOnlineHighSchoolCreds["Token"];
+                    domain = Options.BYUOnlineHighSchoolCreds["BaseUri"];
+                    break;
                 case "Directory":
                     //Directory, nothing should be needed
                     break;
