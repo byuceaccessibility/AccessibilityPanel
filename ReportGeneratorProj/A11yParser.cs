@@ -770,6 +770,7 @@
                 {
                     text = "\"" + HttpUtility.HtmlDecode(color.InnerText) + "\"\n";
                 }
+                else continue; // if color.InnerText is null we assume this is not an issue.
                 if(text == string.Empty || text == "\"\"")
                 {   //if there was no text just assume it isn't an issue. Will be almost impossible to find it anyway.
                     continue;
