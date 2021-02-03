@@ -207,3 +207,7 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\De
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.pdb
 C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csprojAssemblyReference.cache
 C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.CoreCompileInputs.cache
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csprojAssemblyReference.cache
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.CoreCompileInputs.cache
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.exe
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.pdb

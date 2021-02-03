@@ -338,3 +338,5 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.exe
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.pdb
 C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.csproj.CoreCompileInputs.cache
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.exe
+C:\Users\Nate\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.pdb
