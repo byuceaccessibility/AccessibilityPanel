@@ -585,7 +585,7 @@
             //Process page semantics (i and b tags).
             var i_or_b_tag_list = PageDocument.Doc
                 .DocumentNode
-                .SelectNodes("//i | //b");
+                .SelectNodes("//i[not(@aria-hidden='true')] | //b");
             if (i_or_b_tag_list == null)
             {
                 return;
