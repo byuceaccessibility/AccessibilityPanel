@@ -395,7 +395,7 @@
                 {
                     src = iframe.Attributes["src"].Value;
                 }
-                if (iframe.Attributes["title"] == null)
+                if ((iframe.Attributes["title"] == null) && (iframe.Attributes["aria-label"] == null))
                 {
                     //Only real accessiblity issue we can check is if it has a title or not
                     if (new Regex("youtube", RegexOptions.IgnoreCase).IsMatch(src))

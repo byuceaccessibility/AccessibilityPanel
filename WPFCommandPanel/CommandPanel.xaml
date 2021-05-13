@@ -41,82 +41,31 @@
         
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-            <GroupBox Grid.Column="0" 
-                      Header="Browswer Controls" 
-                      FontSize="15"
-                      Height="500"
-                      VerticalAlignment="Top">
-            <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MaxWidth="250"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Row="0" 
-                        Content="Open Browser" 
-                        Margin="0 0 0 10"
-                        Click="OpenBrowserButton"/>
-                <Button Grid.Row="1" 
-                        Content="Nav to Canvas" 
-                        Margin="0 0 0 10"
-                        Click="Canvas_Click"/>
-                <Button Grid.Row="2" 
-                        Content="Nav to Test Canvas" 
-                        Margin="0 0 0 10"
-                        Click="TestCanvas_Click"/>
-                <Button Grid.Row="3" 
-                        Content="Nav to MasterCourses" 
-                        Margin="0 0 0 10"
-                        Click="MasterCanvas_Click"/>
-                <Button Grid.Row="4" 
-                        Content="Login" 
-                        Margin="0 0 0 10"
-                        Click="Login_Click"/>
-                <Button Grid.Row="5" 
-                        Content="Ralt" 
-                        Margin="0 0 0 10" 
-                        Click="Ralt_Click"/>
-                    <Button Grid.Row="6"
-                        Content="A11yHelp"
-                        Margin="0 0 0 10"
-                        Click="A11yHelp_Click"/>
-                    <Button Grid.Row="7"
-                            Content="Review Current Page"
-                            Margin="0 0 0 10"
-                            Click="ReviewPage_Click"/>
-                    <Button Grid.Row="8"
-                        Content="Create Page Report"
-                        Margin="0 0 0 10"
-                        Click="CreatePageReport_Click"/>
-                    <Button Grid.Row="9"
-                        Content="FindReplace"
-                        Margin="0 0 0 10"
-                        Click="FindReplace_Click"/>
-                </Grid>
-        </GroupBox>
-        <GroupBox Grid.Column="1" 
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Column="1" 
                   FontSize="15"
                   Header="Reports">
                 <StackPanel Height="Auto">
-                    <Label Content="Course ID or Directory:"/>
+                    <Label>Course ID or Directory:
+                        <Label.ToolTip>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                TextAlignment="Left"
+                                TextWrapping="WrapWithOverflow">
+                                <Bold>How to find the Course ID:</Bold><LineBreak/>
+                                The course ID is found in the URL after the domain and the word "courses" (example: byuismastercourses.instructure.com/courses/<Bold>1335</Bold>).<LineBreak/>
+                                To generate report, place the course ID (1335 for the example) in the form field and select "Generate Report".<LineBreak/>
+                                <LineBreak/>
+                                <Bold>How to find the Correct Directory Path:</Bold><LineBreak/>
+                                The panel can make an accessibility report for a folder of HTML files. To create this report you would find the file path to the folder containing the HTML files, place that in the form field and select "Generate Report".
+                            </TextBlock>
+                        </Label.ToolTip>
+                    </Label>
                     <TextBox Name="CourseID" 
                          Margin="10 0 10 10"/>
                     <Grid>
@@ -135,7 +84,6 @@
                             Height="25" 
                             VerticalAlignment="Top"
                             Click="GenerateReport_Click"/>
-
                     </Grid>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -146,8 +94,18 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Content="Report List"/>
-                    <ListBox Grid.Row="1"
+                        <Label Grid.Row="0"
+                               MouseDoubleClick="OpenReportList_DoubleClick">
+                            Report List
+                            <Label.ToolTip>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    TextAlignment="Left">
+                                    Double click to view the reports in File Explorer.
+                                </TextBlock>
+                            </Label.ToolTip>
+                        </Label>
+                        <ListBox Grid.Row="1"
                          Margin="10 0 10 0" 
                          Name="ReportList"
                          MouseDoubleClick="ReportList_DoubleClick"

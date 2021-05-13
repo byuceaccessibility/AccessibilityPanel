@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFCommandPanel"
         mc:Ignorable="d"
-        Title="A11yControlPanel v4.02" 
-        Height="1000" 
-        Width="2000"
+        Title="A11yControlPanel v5.00" 
+        Height="800" 
+        Width="1000"
         Background="Black"
         Style="{StaticResource CustomWindowStyle}"
         AllowsTransparency="False"
@@ -29,37 +29,35 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="35*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="95*"/>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0"
-
-                  VerticalAlignment="Top">
+        <GroupBox Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="75*"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
+                        Padding="5,5,5,5"
+                        VerticalAlignment="Top"
                         Click="SwitchA11yReview"
                         >
                     A11yReview
                 </Button>
                 <Button Grid.Column="1"
-                        Click="SwitchA11yRepair">
-                    A11yRepair
-                </Button>
-                <Button Grid.Column="2"
+                        Padding="5,5,5,5"
+                        VerticalAlignment="Top"
                         Click="SwitchOptions">
                     Options
                 </Button>
-                <!-- <Button Grid.Column="3"
-                        Click="SwitchA11yViewer">
-                    A11yViewer
-                </Button> -->
+                <TextBlock Grid.Column="2"
+                           Text="Please choose your domain:"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"
+                           Foreground="White"/>
                 <Grid Grid.Column="3" 
                               Name="RadioButtonGroup">
                     <Grid.ColumnDefinitions>

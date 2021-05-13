@@ -37,14 +37,23 @@
     </Page.Resources>
 
     <Grid>
-        <avalonEdit:TextEditor Name="editor"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <avalonEdit:TextEditor Grid.Row="0"
+                               Name="editor"
                                FontSize="14"
                                Background="LightGray"
                                ShowLineNumbers="True"
                                WordWrap="True"
-                               Grid.Row="0"
                                KeyDown="editor_KeyDown"
-                               />                   
-                     
+                               />
+        <Button Grid.Row="1"
+                HorizontalAlignment="Right"
+                Margin="5"
+                Click="save_Click">
+            Save
+        </Button>
     </Grid>
 </Page>

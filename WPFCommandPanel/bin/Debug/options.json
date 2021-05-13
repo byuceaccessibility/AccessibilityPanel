@@ -1,6 +1,6 @@
 {
     "GoogleApi":  "AIzaSyCNWRFdMRFgFhLQ1JGarXn7lLRKt4t7gkg",
-    "CourseBackupDir":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\COURSE_BACKUP",
+    "CourseBackupDir":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\COURSE_BACKUP",
     "BYUOnlineCreds":  {
                            "BaseUri":  "https://byu.instructure.com",
                            "Token":  "7407~G9j7ybsIeicoigvKe78cz6rVQT2oSZExBaQT8G4wNom10XArVn1duk53A5Jfim97"
@@ -13,7 +13,7 @@
                           "imagegallery.html",
                           "coursemedia.html"
                       ],
-    "ExcelTemplatePath":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\ReportGenerators-master\\CAR - Accessibility Review Template.xlsx",
+    "ExcelTemplatePath":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\ReportGenerators-master\\CAR - Accessibility Review Template.xlsx",
     "A11yEmail":  "byuceaccessibility@byu.edu",
     "IDriveContentUrl":  "https://iscontent.byu.edu",
     "ByuCred":  {
@@ -21,7 +21,7 @@
                     "Username":  ""
                 },
     "BaseExcelArchive":  "N:\\IS\\Production\\Courses",
-    "ReportPath":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\ReportGenerators-master\\Reports",
+    "ReportPath":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\ReportGenerators-master\\Reports",
     "A11yToolsDir":  "Desktop\\AccessibilityTools",
     "BrightCoveCred":  {
                            "Password":  "4BYUcougars",
@@ -37,9 +37,9 @@
     			   },
     "QDriveContentUrl":  "https://isdev.byu.edu/courses",
     "BaseMoveReportsDir":  "N:\\IS\\Quality Assurance\\03 Course Inspections\\2019\\2019 Accessibility",
-    "ChromeDriverPath":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\PowerShell\\Modules\\SeleniumTest",
-    "PowershellScriptDir":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\PowerShell",
-    "FirefoxDriverPath":  "C:\\Users\\Nate\\Desktop\\AccessibilityTools\\PowerShell\\Modules\\SeleniumTest",
+    "ChromeDriverPath":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\PowerShell\\Modules\\SeleniumTest",
+    "PowershellScriptDir":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\PowerShell",
+    "FirefoxDriverPath":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\PowerShell\\Modules\\SeleniumTest",
     "JsonDataDir":  "M:\\DESIGNER\\Content EditorsELTA\\Accessibility Assistants\\JSON_DATA\\Accessibility",
     "HighScorePath":  "M:\\DESIGNER\\Content EditorsELTA\\Accessibility Assistants\\A11y Panel\\Source Folders\\HIGHSCORE.txt"
 }

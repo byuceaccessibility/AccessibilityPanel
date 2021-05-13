@@ -28,13 +28,20 @@ namespace WPFCommandPanel
             InitializeComponent();
 
             string json = "";
-            string path = Assembly.GetEntryAssembly().Location.Contains("source") ? @"C:\Users\jwilli48\Desktop\AccessibilityTools\A11yPanel\options.json" :
+            string path = Assembly.GetEntryAssembly().Location.Contains("source") ? @"C:\Users\nl\Desktop\AccessibilityTools\A11yPanel\options.json" :
                                 System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\options.json";
             using (StreamReader r = new StreamReader(path))
             {
                 json = r.ReadToEnd();
             }
             editor.Text = json;          
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            string path = Assembly.GetEntryAssembly().Location.Contains("source") ? @"C:\Users\jwilli48\Desktop\AccessibilityTools\A11yPanel\options.json" :
+            System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\options.json";
+            File.WriteAllText(path, editor.Text);
         }
 
         private void editor_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

@@ -101,6 +101,12 @@ namespace WPFCommandPanel
             //PageParser = new PageReviewer();
         }
         
+
+        private void OpenReportList_DoubleClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(MainWindow.panelOptions.ReportPath);
+        }
+
         
         private void ReportList_DoubleClick(object sender, EventArgs e)
         {
