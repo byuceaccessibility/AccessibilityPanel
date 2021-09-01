@@ -155,9 +155,24 @@
                     case "no transcript found":
                         A11yAddToCell("Media", "Transcript Needed", data.Text, 5, 5, 5, html: (data as PageA11yData).html);
                         break;
-                    case "revise table":
-                        A11yAddToCell("Table", "", data.Text, html: (data as PageA11yData).html);
+                    case "table contains streched cells":
+                        A11yAddToCell("Table", "Contains streched cells", data.Text, html: (data as PageA11yData).html);
                         break;
+                    case "missing headers":
+                        A11yAddToCell("Table", "Missing headers", data.Text, html: (data as PageA11yData).html);
+                        break;
+                    case "scope attributes missing/misused":
+                        A11yAddToCell("Table", "Scope attributes missing/misused", data.Text, html: (data as PageA11yData).html);
+                        break;
+                    case "empty table":
+                        A11yAddToCell("Table", "Empty Table", data.Text, html: (data as PageA11yData).html);
+                        break;
+                    case "complex table":
+                        A11yAddToCell("Table", "Complex Table", data.Text, html: (data as PageA11yData).html);
+                        break;
+                    //case "revise table":
+                    //    A11yAddToCell("Table", "", data.Text, html: (data as PageA11yData).html);
+                    //    break;
                     case "<i>/<b> tags should be <em>/<strong> tags":
                         A11yAddToCell("Semantics", "Bad use of <i> and/or <b>", (data as PageA11yData).Issue, html: (data as PageA11yData).html);
                         break;

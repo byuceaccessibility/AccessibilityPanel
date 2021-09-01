@@ -307,6 +307,8 @@
                 if (stretched_cells != null)
                 {
                     issues += "\nStretched table cell(s) should be a <caption> title for the table";
+                    // Descriptive Issue: "Contains streched cells"
+                    Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Table contains streched cells", 1));
                 }
                 //See how many rows there are, if there is 3 or more and there are no headers then flag it as needing headers
 
@@ -316,6 +318,8 @@
                     if (table_headers == null)
                     {
                         issues += "\nTable has no headers (headers should have scope tags)";
+                        // Descriptive Issue: "Missing headings"
+                        Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Missing headers", 1));
                     }
                 }
                 //See how many headers have scopes, should be the same number as the number of headers
@@ -325,30 +329,38 @@
                     && (scope_headers == null || scope_headers != table_headers.Count()))
                 {
                     issues += "\nTable headers should have a scope attribute";
+                    // Descriptive Issue: "Scope attributes missing/misused"
+                    Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Scope attributes missing/misused", 1));
                 }
                 //See if any data cells have scopes when they should not
                 var scope_cells = table_data_cells?.Count(c => c.Attributes["scope"] != null);
                 if (scope_cells != null && scope_cells > 0)
                 {
                     issues += "\nNon-header table cells should not have scope attributes";
+                    // Descriptive Issue: "Scope attributes missing/misused"
+                    Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Scope attributes missing/misused", 1));
                 }
-                if(!table.HasChildNodes)
+                if (!table.HasChildNodes)
                 {
                     issues += "\nEmpty table should be removed";
+                    // Descriptive Issue: "Empty Table"
+                    Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Empty Table", 1));
                 }
 
                 var numRowsWithMultipleHeaders = table_rows?.Count(c => c.ChildNodes.Where(child => child.Name == "th").Count() > 1 );
                 if (numRowsWithMultipleHeaders != null && numRowsWithMultipleHeaders > 1) {
                     issues += "\nTables should not have multiple header rows, they should be split into seperate tables or have the headers combined";
+                    // Descriptive Issue: "Complex Table"
+                    Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Complex Table", 1));
                 }
                 //If any issues were found then add it to the list
-                if (issues != null && issues != "")
-                {
-                    lock (Data)
-                    {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Revise table", 1));
-                    }
-                }
+                //if (issues != null && issues != "")
+                //{
+                //    lock (Data)
+                //    {
+                //        Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Revise table", 1));
+                //    }
+                //}
                 table_num++;
             }
         }
@@ -383,7 +395,7 @@
                                                     "Iframe",
                                                     "Can't find source",
                                                     "Unable to find iframe source",
-                                                    "Iframes should all have a soruce",
+                                                    "Iframes should all have a source",
                                                     3,
                                                     iframe.XPath));
                         }
