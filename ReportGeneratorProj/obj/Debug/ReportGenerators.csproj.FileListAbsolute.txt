@@ -200,7 +200,6 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\De
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\RestSharp.xml
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\WebDriver.xml
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\WebDriver.Support.xml
-C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csprojAssemblyReference.cache
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.CoreCompileInputs.cache
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.CopyComplete
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.exe
@@ -211,3 +210,4 @@ C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\
 C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.CoreCompileInputs.cache
 C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.exe
 C:\Users\Nate\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.pdb
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.csproj.AssemblyReference.cache
