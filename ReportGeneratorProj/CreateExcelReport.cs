@@ -149,6 +149,9 @@
                     case "alt text may need adjustment or no alt attribute":
                         A11yAddToCell("Image", "Non-Descriptive alt tags", data.Text, html: (data as PageA11yData).html);
                         break;
+                    case "ordered list":
+                        A11yAddToCell("Semantics", "Non-native HTML tags", data.Text, html: (data as PageA11yData).html);
+                        break;
                     case "check if header is meant to be invisible and is not a duplicate":
                         A11yAddToCell("Semantics", "Improper Headings", $"Invisible header:\n{data.Text}", html: (data as PageA11yData).html);
                         break;

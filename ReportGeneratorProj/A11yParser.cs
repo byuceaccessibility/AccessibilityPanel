@@ -110,6 +110,7 @@
                 //Process the elements of the page from the HTML
                 ProcessLinks(PageDocument);
                 ProcessImages(PageDocument);
+                ProcessParagraphs(PageDocument);
                 ProcessIframes(PageDocument);
                 ProcessTables(PageDocument);
                 ProcessBrightcoveVideoHTML(PageDocument);
@@ -278,6 +279,27 @@
                     {
                         Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
                     }
+                }
+            }
+        }
+        private void ProcessParagraphs(DataToParse PageDocument) //FIXME
+        {
+            //Get all paragraphs
+            var paragraph_list = PageDocument.Doc
+                .DocumentNode
+                .SelectNodes("//p");
+            //Make sure it isn't null
+            if (paragraph_list == null)
+            {
+                return;
+            }
+            //Count the paragraphs
+            var paragraph_num = 1;
+            foreach (var paragraph in paragraph_list)
+            {
+                if (new Regex("^\\d\\.\\s[\\W\\w]").IsMatch(paragraph.InnerText))
+                {
+                    Data.Add(new PageA11yData(PageDocument.Location, "Semantics", "", "Ordered list should be formated as such", "Ordered List", 1));
                 }
             }
         }
