@@ -259,6 +259,13 @@
                         Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
+                else if (new Regex(@"\.jpeg", RegexOptions.IgnoreCase).IsMatch(alt))
+                {
+                    lock (Data)
+                    {
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
+                    }
+                }
                 else if (new Regex(@"\.png", RegexOptions.IgnoreCase).IsMatch(alt))
                 {
                     lock (Data)
