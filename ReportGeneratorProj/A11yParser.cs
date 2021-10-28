@@ -42,6 +42,7 @@
         {
             PathToChromedriver = Options.ChromeDriverPath;
         }
+
         private string PathToChromedriver;    
         /// <summary>
         /// Main function to begin processing pages. Calls all the other functions. 
@@ -212,76 +213,162 @@
             {
                 var alt = image.Attributes["alt"]?.Value; //Get Alt attribute and set as "alt"
                 var src = image.Attributes["src"]?.Value; //Get SRC attribute and set as "src"
-                if (String.IsNullOrEmpty(src)) src = "";
                 var parentClass = image.ParentNode.Attributes["class"]?.Value; //Get Parent Node and identify class as "parentClass"
-                if (String.IsNullOrEmpty(parentClass)) parentClass = "";
+                if (String.IsNullOrEmpty(src)) src = "";
                 //Sort Image issues
-                if ((new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src)) && (String.IsNullOrEmpty(alt)))
+                if (new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src) && String.IsNullOrEmpty(alt))
                 {   //Check if empty alt text first is an banner as described in the filepath
                     //Ignore
                 }
-                else if (null != parentClass)
+                else if (parentClass != null)
                 {   //If the image has a parent node with a class
-                    if (new Regex("HeaderGraphic", RegexOptions.IgnoreCase).IsMatch(parentClass))
+                    if (new Regex("HeaderGraphic", RegexOptions.IgnoreCase).IsMatch(parentClass) && (String.IsNullOrEmpty(alt)))
                     {   //Check if Parent node is classed as a "Header Graphic"
                         //Ignore
                     }
                 }
-                else if ((new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src)))
-                {   //Check if src data is just a lesson's banner
-                    //Ignore
-                }
+                //else if (new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src))
+                //{   //Check if src data is just a lesson's banner
+                //    //Ignore
+                //}
                 else if (String.IsNullOrEmpty(alt))
                 {   //Empty alt text should be manually checked for decortive qualities
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", image.OuterHtml, "Alt text may need adjustment or No alt attribute", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", image.OuterHtml, "alt text may need adjustment or no alt attribute", 1, image.XPath));
                     }
                 }
                 else if (new Regex("banner", RegexOptions.IgnoreCase).IsMatch(alt))
                 {   //Banners shouldn't have alt text
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
                 else if (new Regex("Placeholder", RegexOptions.IgnoreCase).IsMatch(alt))
                 {   //Placeholder probably means the alt text was forgotten to be changed
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
-                else if (new Regex("\\.jpg", RegexOptions.IgnoreCase).IsMatch(alt))
+                else if (new Regex(@"\.jpg", RegexOptions.IgnoreCase).IsMatch(alt))
                 {   //Make sure it is not just the images file name
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
-                else if (new Regex("\\.png", RegexOptions.IgnoreCase).IsMatch(alt))
+                else if (new Regex(@"\.png", RegexOptions.IgnoreCase).IsMatch(alt))
                 {
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
                 else if (new Regex("http", RegexOptions.IgnoreCase).IsMatch(alt))
                 {   //It should not be a url
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
                 else if (new Regex("LaTeX:", RegexOptions.IgnoreCase).IsMatch(alt))
                 {   //Should not be latex (ran into this a couple of times)
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "alt text may need adjustment", 1, image.XPath));
                     }
                 }
             }
         }
+
+        //private void ProcessImages(DataToParse PageDocument)
+        //{
+        //    //Get list of images
+        //    var image_list = PageDocument.Doc
+        //        .DocumentNode
+        //        .SelectNodes("//img");
+        //    //Make sure it is not null
+        //    if (image_list == null)
+        //    {
+        //        return;
+        //    }
+        //    //Loop through all images
+        //    foreach (var image in image_list)
+        //    {
+        //        var alt = image.Attributes["alt"]?.Value; //Get Alt attribute and set as "alt"
+        //        var src = image.Attributes["src"]?.Value; //Get SRC attribute and set as "src"
+        //        if (String.IsNullOrEmpty(src)) src = "";
+        //        var parentClass = image.ParentNode.Attributes["class"]?.Value; //Get Parent Node and identify class as "parentClass"
+        //        if (String.IsNullOrEmpty(parentClass)) parentClass = "";
+        //        //Sort Image issues
+        //        if ((new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src)) && (String.IsNullOrEmpty(alt)))
+        //        {   //Check if empty alt text first is an banner as described in the filepath
+        //            //Ignore
+        //        }
+        //        else if (parentClass != null)
+        //        {   //If the image has a parent node with a class
+        //            if (new Regex("HeaderGraphic", RegexOptions.IgnoreCase).IsMatch(parentClass))
+        //            {   //Check if Parent node is classed as a "Header Graphic"
+        //                //Ignore
+        //            }
+        //        }
+        //        else if ((new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src)))
+        //        {   //Check if src data is just a lesson's banner
+        //            //Ignore
+        //        }
+        //        else if (String.IsNullOrEmpty(alt))
+        //        {   //Empty alt text should be manually checked for decortive qualities
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", image.OuterHtml, "Alt text may need adjustment or No alt attribute", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("banner", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {   //Banners shouldn't have alt text
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("Placeholder", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {   //Placeholder probably means the alt text was forgotten to be changed
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("\\.jpg", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {   //Make sure it is not just the images file name
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("\\.png", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("http", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {   //It should not be a url
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //        else if (new Regex("LaTeX:", RegexOptions.IgnoreCase).IsMatch(alt))
+        //        {   //Should not be latex (ran into this a couple of times)
+        //            lock (Data)
+        //            {
+        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
+        //            }
+        //        }
+        //    }
+        //}
         private void ProcessParagraphs(DataToParse PageDocument) //FIXME
         {
             //Get all paragraphs
@@ -299,8 +386,9 @@
             {
                 if (new Regex("^\\d\\.\\s[\\W\\w]").IsMatch(paragraph.InnerText))
                 {
-                    Data.Add(new PageA11yData(PageDocument.Location, "Semantics", "", "Ordered list should be formated as such", "Ordered List", 1));
+                    Data.Add(new PageA11yData(PageDocument.Location, "Semantics", "", $"Ordered list should be formated as such in paragraph {paragraph_num}.", "Ordered List", 1));
                 }
+                paragraph_num++;
             }
         }
         private void ProcessTables(DataToParse PageDocument)
@@ -619,7 +707,8 @@
             //Process page semantics (i and b tags).
             var i_or_b_tag_list = PageDocument.Doc
                 .DocumentNode
-                .SelectNodes("//i[not(@aria-hidden='true')] | //b");
+                .SelectNodes("i[not(@class='fas')] | //b");
+                //.SelectNodes("//i[not(@aria-hidden='true')] | //b");
             if (i_or_b_tag_list == null)
             {
                 return;

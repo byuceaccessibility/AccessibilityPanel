@@ -144,10 +144,10 @@
                         A11yAddToCell("Image", "No Alt Attribute", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "alt text may need adjustment":
-                        A11yAddToCell("Image", "Non-Descriptive alt tags", data.Text, html: (data as PageA11yData).html);
+                        A11yAddToCell("Image", "Non-descriptive alt tags", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "alt text may need adjustment or no alt attribute":
-                        A11yAddToCell("Image", "Non-Descriptive alt tags", data.Text, html: (data as PageA11yData).html);
+                        A11yAddToCell("Image", "Non-descriptive alt tags", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "ordered list":
                         A11yAddToCell("Semantics", "Non-native HTML tags", data.Text, html: (data as PageA11yData).html);
