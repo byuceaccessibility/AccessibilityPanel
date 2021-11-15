@@ -159,7 +159,7 @@
                 {   //If it is an image ignore it for now, need to check alt text
                     continue;
                 }
-                if (link.InnerText == null || link.InnerText == "")
+                if (String.IsNullOrWhiteSpace(link.InnerText)) // OLD CONDITIONlink.InnerText == null || link.InnerText == ""
                 {   //See if it is a link without text
                     lock (Data)
                     {
@@ -192,6 +192,24 @@
                     lock (Data)
                     {
                         Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Adjust Link Text", 1, link.XPath));
+                    }
+                }
+                else if (new Regex(@"(\.)(pdf|pptx*|docx*|xml|rtf)", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
+                {   // Check for Files via file extension
+                    lock (Data)
+                    {
+                        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
+                    }
+                }
+                else if (link.Attributes["data-api-returntype"] != null && link.Attributes["data-api-returntype"].Value.Equals("File"))
+                {   // Check for Files via data-api-returntype
+                    if (new Regex("Transcript|Audio Description", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
+                    {   // Don't catch Transciipts
+                        continue;
+                    }
+                    lock (Data)
+                    {
+                        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
                     }
                 }
             }
@@ -231,11 +249,11 @@
                 //{   //Check if src data is just a lesson's banner
                 //    //Ignore
                 //}
-                else if (String.IsNullOrEmpty(alt))
+                else if (String.IsNullOrEmpty(alt) || String.IsNullOrWhiteSpace(alt))
                 {   //Empty alt text should be manually checked for decortive qualities
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", image.OuterHtml, "alt text may need adjustment or no alt attribute", 1, image.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Image", "", "Empty alt attribute", "alt text may need adjustment or no alt attribute", 1, image.XPath));
                     }
                 }
                 else if (new Regex("banner", RegexOptions.IgnoreCase).IsMatch(alt))
@@ -290,93 +308,7 @@
             }
         }
 
-        //private void ProcessImages(DataToParse PageDocument)
-        //{
-        //    //Get list of images
-        //    var image_list = PageDocument.Doc
-        //        .DocumentNode
-        //        .SelectNodes("//img");
-        //    //Make sure it is not null
-        //    if (image_list == null)
-        //    {
-        //        return;
-        //    }
-        //    //Loop through all images
-        //    foreach (var image in image_list)
-        //    {
-        //        var alt = image.Attributes["alt"]?.Value; //Get Alt attribute and set as "alt"
-        //        var src = image.Attributes["src"]?.Value; //Get SRC attribute and set as "src"
-        //        if (String.IsNullOrEmpty(src)) src = "";
-        //        var parentClass = image.ParentNode.Attributes["class"]?.Value; //Get Parent Node and identify class as "parentClass"
-        //        if (String.IsNullOrEmpty(parentClass)) parentClass = "";
-        //        //Sort Image issues
-        //        if ((new Regex("banner", RegexOptions.IgnoreCase).IsMatch(src)) && (String.IsNullOrEmpty(alt)))
-        //        {   //Check if empty alt text first is an banner as described in the filepath
-        //            //Ignore
-        //        }
-        //        else if (parentClass != null)
-        //        {   //If the image has a parent node with a class
-        //            if (new Regex("HeaderGraphic", RegexOptions.IgnoreCase).IsMatch(parentClass))
-        //            {   //Check if Parent node is classed as a "Header Graphic"
-        //                //Ignore
-        //            }
-        //        }
-        //        else if ((new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src)))
-        //        {   //Check if src data is just a lesson's banner
-        //            //Ignore
-        //        }
-        //        else if (String.IsNullOrEmpty(alt))
-        //        {   //Empty alt text should be manually checked for decortive qualities
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", image.OuterHtml, "Alt text may need adjustment or No alt attribute", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("banner", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {   //Banners shouldn't have alt text
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("Placeholder", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {   //Placeholder probably means the alt text was forgotten to be changed
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("\\.jpg", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {   //Make sure it is not just the images file name
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("\\.png", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("http", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {   //It should not be a url
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //        else if (new Regex("LaTeX:", RegexOptions.IgnoreCase).IsMatch(alt))
-        //        {   //Should not be latex (ran into this a couple of times)
-        //            lock (Data)
-        //            {
-        //                Data.Add(new PageA11yData(PageDocument.Location, "Image", "", alt, "Alt text may need adjustment", 1, image.XPath));
-        //            }
-        //        }
-        //    }
-        //}
-        private void ProcessParagraphs(DataToParse PageDocument) //FIXME
+        private void ProcessParagraphs(DataToParse PageDocument)
         {
             //Get all paragraphs
             var paragraph_list = PageDocument.Doc
@@ -466,7 +398,7 @@
 
                 var numRowsWithMultipleHeaders = table_rows?.Count(c => c.ChildNodes.Where(child => child.Name == "th").Count() > 1 );
                 if (numRowsWithMultipleHeaders != null && numRowsWithMultipleHeaders > 1) {
-                    issues += "\nTables should not have multiple header rows, they should be split into seperate tables or have the headers combined";
+                    issues += "\nTables should not have multiple header rows, they should be split into separate tables or have the headers combined";
                     // Descriptive Issue: "Complex Table"
                     Data.Add(new PageA11yData(PageDocument.Location, "Table", "", $"Table number {table_num}:{issues}", "Complex Table", 1));
                 }
@@ -655,7 +587,7 @@
                         }
                     }
                 }
-                if (new Regex("brightcove|byu\\.mediasite|panopto|vimeo|dailymotion|facebook|ambrosevideo|kanopy|alexanderstreet", RegexOptions.IgnoreCase).IsMatch(src))
+                if (new Regex("brightcove|byu\\.mediasite|panopto|vimeo|dailymotion|facebook|ambrosevideo|kanopy|alexanderstreet|youtube", RegexOptions.IgnoreCase).IsMatch(src))
                 {   //If it is a video then need to check if there is a transcript
                     if (!VideoParser.CheckTranscript(iframe))
                     {

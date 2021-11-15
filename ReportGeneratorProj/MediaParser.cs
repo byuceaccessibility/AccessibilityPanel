@@ -193,8 +193,8 @@
                                                     link.InnerText + video_found,
                                                     link.Attributes["href"].Value,
                                                     video_length,
-                                                    true,
-                                                    true));
+                                                    false,
+                                                    false)); ;
                     }
                 }
                 else if (link.Attributes["href"].Value.Contains("alexanderstreet"))

@@ -177,6 +177,7 @@
     <Compile Include="CreateExcelReport.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="DocumentParser.cs" />
     <Compile Include="LinkParser.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>

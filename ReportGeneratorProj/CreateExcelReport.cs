@@ -126,7 +126,7 @@
                 switch ((data as PageA11yData).Issue.ToLower())
                 {
                     case "adjust link text":
-                        A11yAddToCell("Link", "Non-Descriptive Link", data.Text, html:(data as PageA11yData).html);
+                        A11yAddToCell("Link", "Non-Descriptive Link", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "javascript links are not accessible":
                         A11yAddToCell("Link", "JavaScript Link", data.Text, html: (data as PageA11yData).html);
@@ -136,6 +136,9 @@
                         break;
                     case "empty link tag":
                         A11yAddToCell("Link", "Broken Link", data.Text, html: (data as PageA11yData).html);
+                        break;
+                    case "check document accessibility":
+                        A11yAddToCell("Link", "Check Document Accessibility", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "needs a title":
                         A11yAddToCell("Semantics", "Missing title/label", $"{data.Element} needs a title attribute\nID: {data.Id}", html: (data as PageA11yData).html);
@@ -159,7 +162,7 @@
                         A11yAddToCell("Media", "Transcript Needed", data.Text, 5, 5, 5, html: (data as PageA11yData).html);
                         break;
                     case "table contains streched cells":
-                        A11yAddToCell("Table", "Contains streched cells", data.Text, html: (data as PageA11yData).html);
+                        A11yAddToCell("Table", "Contains stretched cells", data.Text, html: (data as PageA11yData).html);
                         break;
                     case "missing headers":
                         A11yAddToCell("Table", "Missing headers", data.Text, html: (data as PageA11yData).html);
