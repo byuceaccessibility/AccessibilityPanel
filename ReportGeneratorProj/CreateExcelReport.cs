@@ -137,9 +137,10 @@
                     case "empty link tag":
                         A11yAddToCell("Link", "Broken Link", data.Text, html: (data as PageA11yData).html);
                         break;
-                    case "check document accessibility":
-                        A11yAddToCell("Link", "Check Document Accessibility", data.Text, html: (data as PageA11yData).html);
-                        break;
+                    // FIXME: Document Parsing
+                    //case "check document accessibility":
+                    //    A11yAddToCell("Link", "Check Document Accessibility", data.Text, html: (data as PageA11yData).html);
+                    //    break;
                     case "needs a title":
                         A11yAddToCell("Semantics", "Missing title/label", $"{data.Element} needs a title attribute\nID: {data.Id}", html: (data as PageA11yData).html);
                         break;

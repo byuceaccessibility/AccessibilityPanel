@@ -194,24 +194,25 @@
                         Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Adjust Link Text", 1, link.XPath));
                     }
                 }
-                else if (new Regex(@"(\.)(pdf|pptx*|docx*|xml|rtf)", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
-                {   // Check for Files via file extension
-                    lock (Data)
-                    {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
-                    }
-                }
-                else if (link.Attributes["data-api-returntype"] != null && link.Attributes["data-api-returntype"].Value.Equals("File"))
-                {   // Check for Files via data-api-returntype
-                    if (new Regex("Transcript|Audio Description", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
-                    {   // Don't catch Transciipts
-                        continue;
-                    }
-                    lock (Data)
-                    {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
-                    }
-                }
+                // FIXME: Document Parsing
+                //else if (new Regex(@"(\.)(pdf|pptx*|docx*|xml|rtf)", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
+                //{   // Check for Files via file extension
+                //    lock (Data)
+                //    {
+                //        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
+                //    }
+                //}
+                //else if (link.Attributes["data-api-returntype"] != null && link.Attributes["data-api-returntype"].Value.Equals("File"))
+                //{   // Check for Files via data-api-returntype
+                //    if (new Regex("Transcript|Audio Description", RegexOptions.IgnoreCase).IsMatch(link.InnerText))
+                //    {   // Don't catch Transciipts
+                //        continue;
+                //    }
+                //    lock (Data)
+                //    {
+                //        Data.Add(new PageA11yData(PageDocument.Location, "Link", "", link.InnerText, "Check Document Accessibility", 1, link.XPath));
+                //    }
+                //}
             }
         }
 
