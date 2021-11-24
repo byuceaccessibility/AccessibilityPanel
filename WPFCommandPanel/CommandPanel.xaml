@@ -144,20 +144,13 @@
                                     MaxHeight="240"/>
                         </Border>
                     </ScrollViewer>
-                <Button Grid.Row="1"
+                    <Button Grid.Row="1"
                         Margin="10 0 10 0"
                         Width="100"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Content="Clear"
                         Click="ClearButton_Click"/>
-                    <Button Grid.Row="1"
-                        Margin="0,0,115,0"
-                        Width="100"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Content="Update"
-                        Click="UpdatePanel"/>
                     <Button Grid.Row="1"
                         Margin="10 0 10 0"
                         Width="200"

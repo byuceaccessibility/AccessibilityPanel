@@ -9,64 +9,53 @@
     using System.Threading.Tasks;
     using My.StringExtentions;
     using Newtonsoft.Json;
+    using System.Text;
+    using My.CanvasApi;
 
     public class DocumentParser : RParserBase
     {
         //Class for Document Parsing
-        public DocumentParser(string path)
-        {
-            Directory = path;
-        }
-        private string Directory = string.Empty;
-        public TimeSpan Time = new TimeSpan(0);
-        private object AddTime = new object();
+        public DocumentParser() { }
+
         public override void ProcessContent(Dictionary<string, string> page_info)
         {
-            System.Diagnostics.Stopwatch TimeRunning = new System.Diagnostics.Stopwatch();
-            TimeRunning.Start();
-            if (page_info[page_info.Keys.ElementAt(0)] == null)
-            {
-                return;
-            }
-            var PageDocument = new DataToParse(page_info.Keys.ElementAt(0), page_info[page_info.Keys.ElementAt(0)]);
+            var url = page_info.Keys.ElementAt(0);
+            if (page_info[url] == null) { return; }
+            if (Options.FilesToIgnore.Contains(url.ToLower())) { return; }
+            var PageDocument = new DataToParse(url, page_info[url]);
 
             ProcessDocuments(PageDocument);
-            TimeRunning.Stop();
-            lock (AddTime)
-            {
-                Time += TimeRunning.Elapsed;
-            }
         }
-        private string GetDocumentDownload(string path)
-        {
-            HttpWebRequest req = WebRequest.CreateHttp(path);
-            req.Method = "GET";
-            using (HttpWebResponse res = (HttpWebResponse)req.GetResponse())
-            {
-                using (Stream responseStream = res.GetResponseStream())
-                {
-                    using (StreamReader myStreamReader = new StreamReader(responseStream, Encoding.UTF8))
-                    {
-                        string responseJSON = myStreamReader.ReadToEnd();
-                        dynamic json = Newtonsoft.Json.Linq.JObject.Parse(responseJSON);
-                        return json.url;
-                    }
-                }
-            }
-        }
+
         private void ProcessDocuments(DataToParse PageDocument)
         {
             var document_list = PageDocument.Doc
                 .DocumentNode
-                .SelectNodes("//a[@api-data-returntype='File']");
+                .SelectNodes("//a[contains(@href,'/files/')]");
             if (document_list == null)
             {   // List is empty
                 return;
             }
             Parallel.ForEach(document_list, doc =>
             {
-                var fileDownloadPath = GetDocumentDownload(doc.Attributes["api-data-endpoint"].Value));
-                // Add Data
+                string url = doc.Attributes["href"].Value;
+                url = Regex.Replace(url, @"^(.*?courses\/\d+\/files\/\d+)(.*?)$", "$1");
+                CanvasFile file = CanvasApi.GetFileInformation(url);
+                try
+                {
+                    lock (Data)
+                    {
+                        Data.Add(new PageData(
+                            PageDocument.Location,
+                            file.url,
+                            "",
+                            file.display_name));
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Failed to get File infromation");
+                }
             });
         }
     }

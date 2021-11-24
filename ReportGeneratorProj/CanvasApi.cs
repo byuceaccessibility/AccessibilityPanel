@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace My.CanvasApi
 {
@@ -91,6 +92,14 @@ namespace My.CanvasApi
         public string question_type { get; set; }
         public string question_text { get; set; }
         public List<CanvasQuizQuestionAnswers> answers { get; set; }
+    }
+    public class CanvasFile
+    {
+        //https://canvas.instructure.com/doc/api/files.html
+        public int id { get; set; }
+        public string display_name { get; set; }
+        public string filename { get; set; }
+        public string url { get; set; }
     }
 
     /// <summary>
@@ -346,6 +355,18 @@ namespace My.CanvasApi
             };
             request.AddParameter(p);
             var response = restClient.Execute<CanvasQuizQuesiton>(request);
+            return response.Data;
+        }
+
+        public static CanvasFile GetFileInformation(string url)
+        {   // Assuming File path, not api path
+            // Restructure url for api request
+            url = Regex.Replace(url, @"^(.*?\.com)(.*?)$", "$1/api/v1$2");
+            // Request api
+            var restClient = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Authorization", $"Bearer {token}");
+            var response = restClient.Execute<CanvasFile>(request);
             return response.Data;
         }
     }

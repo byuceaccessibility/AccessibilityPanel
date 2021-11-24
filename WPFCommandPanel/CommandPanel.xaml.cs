@@ -40,10 +40,12 @@ namespace WPFCommandPanel
                 A11yReviewer = new A11yParser();
                 MediaReviewer = new MediaParser();
                 LinkReviewer = new LinkParser("None");
+                DocumentReviewer = new DocumentParser();
             }
             public A11yParser A11yReviewer { get; set; }
             public MediaParser MediaReviewer { get; set; }
             public LinkParser LinkReviewer { get; set; }
+            public DocumentParser DocumentReviewer { get; set; }
         }
         public PageReviewer PageParser;
         //Class to work best with the Listbox and FileSystemWatcher together.

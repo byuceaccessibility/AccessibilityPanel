@@ -48,7 +48,7 @@
             public string html { get; set; }
             public string Url { get; set; }
         }
-        public void CreateReport(List<PageData> A11yData, List<PageData> MediaData, List<PageData> LinkData)
+        public void CreateReport(List<PageData> A11yData, List<PageData> MediaData, List<PageData> LinkData, List<PageData> FileData)
         {   //Public method to create the report from any input (can put null in place of any of the lists if you only need a certain input).
             if (null != A11yData)
             {
@@ -61,6 +61,10 @@
             if (null != LinkData)
             {
                 AddLinkData(LinkData);
+            }
+            if (null != FileData)
+            {
+                AddFileData(FileData);
             }
             //Need to make sure the destination directory exists
             var test_path = new DirectoryInfo(Path.GetDirectoryName(Destination));
@@ -273,6 +277,21 @@
                     }
                 }
                 Cells[RowNumber, 4].Value = data.Text;
+                RowNumber++;
+            }
+        }
+
+        private void AddFileData(List<PageData> data_list)
+        {   // Add File information to Excel Sheet
+            Cells = Excel.Workbook.Worksheets[4].Cells;
+            RowNumber = 4;
+            foreach (var data in data_list)
+            {
+                Cells[RowNumber, 2].Value = data.Text;
+                Cells[RowNumber, 3].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
+                Cells[RowNumber, 3].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
+                Cells[RowNumber, 4].Value = data.Element;
+                Cells[RowNumber, 4].Hyperlink = new System.Uri(data.Element);
                 RowNumber++;
             }
         }
