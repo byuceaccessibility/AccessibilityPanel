@@ -17,11 +17,11 @@ namespace WPFCommandPanel
     public partial class CommandPanel : Page
     {
 
-        private void OnKeyDownHandler(object sender, EventArgs e, KeyEventArgs k)
+        private void GenerateReport_KeyEnter(object sender, KeyEventArgs k)
         {
             if (k.Key == Key.Return)
             {
-                GenerateReport_Click(sender, e);
+                // FIXME: Send to ... GenerateReport_Click(sender, e);
             }
         }
         private void GenerateReport_Click(object sender, EventArgs e)

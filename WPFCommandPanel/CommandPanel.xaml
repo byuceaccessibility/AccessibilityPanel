@@ -68,7 +68,7 @@
                     </Label>
                     <TextBox Name="CourseID" 
                          Margin="10 0 10 10"
-                         KeyDown="OnKeyDownHandler"/>
+                         KeyDown="GenerateReport_KeyEnter"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
