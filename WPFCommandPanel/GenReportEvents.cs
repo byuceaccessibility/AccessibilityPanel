@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.IO;
 using System.ComponentModel;
 using ReportGenerators;
@@ -15,6 +16,14 @@ namespace WPFCommandPanel
 {
     public partial class CommandPanel : Page
     {
+
+        private void OnKeyDownHandler(object sender, EventArgs e, KeyEventArgs k)
+        {
+            if (k.Key == Key.Return)
+            {
+                GenerateReport_Click(sender, e);
+            }
+        }
         private void GenerateReport_Click(object sender, EventArgs e)
         {
             BackgroundWorker worker = new BackgroundWorker
