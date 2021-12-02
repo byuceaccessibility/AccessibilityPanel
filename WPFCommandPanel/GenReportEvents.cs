@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.IO;
 using System.ComponentModel;
 using ReportGenerators;
@@ -15,6 +16,14 @@ namespace WPFCommandPanel
 {
     public partial class CommandPanel : Page
     {
+
+        private void GenerateReport_KeyEnter(object sender, KeyEventArgs k)
+        {
+            if (k.Key == Key.Return)
+            {   // Could Crash with with no explaination???
+                GenerateReport_Click(sender, null);
+            }
+        }
         private void GenerateReport_Click(object sender, EventArgs e)
         {
             BackgroundWorker worker = new BackgroundWorker
@@ -148,6 +157,7 @@ namespace WPFCommandPanel
                 });
                 A11yParser ParseForA11y = new A11yParser();
                 MediaParser ParseForMedia = new MediaParser();
+                DocumentParser ParseForFiles = new DocumentParser();
                 var options = new ParallelOptions { MaxDegreeOfParallelism = -1 };
                 Parallel.ForEach(course.PageHtmlList, options, page =>
                 {
@@ -157,6 +167,7 @@ namespace WPFCommandPanel
                     {
                         ParseForLinks.ProcessContent(page);
                     }
+                    ParseForFiles.ProcessContent(page);
                 });
                 this.Dispatcher.Invoke(() =>
                 {
@@ -168,7 +179,7 @@ namespace WPFCommandPanel
                 });
                 var file_name_extention = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
                 CreateExcelReport GenReport = new CreateExcelReport(MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx");
-                GenReport.CreateReport(ParseForA11y.Data, ParseForMedia.Data, ParseForLinks?.Data);
+                GenReport.CreateReport(ParseForA11y.Data, ParseForMedia.Data, ParseForLinks?.Data, ParseForFiles.Data);
                 s.Stop();
                 ParseForMedia.Chrome.Quit();
                 if (ParseForA11y.Data.Count() > int.Parse(File.ReadAllText(MainWindow.panelOptions.HighScorePath)))
@@ -247,7 +258,7 @@ namespace WPFCommandPanel
         {
             Console.WriteLine("Creating report...");
             CreateExcelReport GenReport = new CreateExcelReport(MainWindow.panelOptions.ReportPath + $"\\ARC_WebPage.xlsx");
-            GenReport.CreateReport(PageParser.A11yReviewer.Data, PageParser.MediaReviewer.Data, null);
+            GenReport.CreateReport(PageParser.A11yReviewer.Data, PageParser.MediaReviewer.Data, null, PageParser.DocumentReviewer.Data);
             PageParser.MediaReviewer.Chrome.Quit();
             PageParser = null;
         }
