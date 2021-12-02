@@ -21,7 +21,7 @@ namespace WPFCommandPanel
         {
             if (k.Key == Key.Return)
             {
-                // FIXME: Send to ... GenerateReport_Click(sender, e);
+                GenerateReport_Click(sender, null);
             }
         }
         private void GenerateReport_Click(object sender, EventArgs e)
