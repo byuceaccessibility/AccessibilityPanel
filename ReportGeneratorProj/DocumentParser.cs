@@ -43,13 +43,20 @@
                 CanvasFile file = CanvasApi.GetFileInformation(url);
                 try
                 {
-                    lock (Data)
+                    if (new Regex("Transcript", RegexOptions.IgnoreCase).IsMatch(file.filename))
                     {
-                        Data.Add(new PageData(
-                            PageDocument.Location,
-                            file.url,
-                            "",
-                            file.display_name));
+                        // Do not add transcripts
+                    }
+                    else
+                    {
+                        lock (Data)
+                        {
+                            Data.Add(new PageData(
+                                PageDocument.Location,
+                                file.url,
+                                "",
+                                file.display_name));
+                        }
                     }
                 }
                 catch

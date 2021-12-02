@@ -287,11 +287,21 @@
             RowNumber = 4;
             foreach (var data in data_list)
             {
+                // Check for Data Type
+                string fileType = data.Text;
+                fileType = Regex.Replace(fileType, @"^(.*)\.(\w+)$", "$2");
+
+                // Check certain files for accessibilty
+                string accessiblity = "Not Accessible";
+
+                // Enter Data into Row
                 Cells[RowNumber, 2].Value = data.Text;
-                Cells[RowNumber, 3].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
-                Cells[RowNumber, 3].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
-                Cells[RowNumber, 4].Value = data.Element;
-                Cells[RowNumber, 4].Hyperlink = new System.Uri(data.Element);
+                Cells[RowNumber, 3].Value = fileType;
+                Cells[RowNumber, 4].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
+                Cells[RowNumber, 4].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
+                Cells[RowNumber, 5].Value = data.Element;
+                Cells[RowNumber, 5].Hyperlink = new System.Uri(data.Element);
+                Cells[RowNumber, 6].Value = accessiblity;
                 RowNumber++;
             }
         }

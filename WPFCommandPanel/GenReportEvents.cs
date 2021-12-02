@@ -20,7 +20,7 @@ namespace WPFCommandPanel
         private void GenerateReport_KeyEnter(object sender, KeyEventArgs k)
         {
             if (k.Key == Key.Return)
-            {
+            {   // Could Crash with with no explaination???
                 GenerateReport_Click(sender, null);
             }
         }
