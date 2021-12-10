@@ -290,6 +290,7 @@
                 // Check for Data Type
                 string fileType = data.Text;
                 fileType = Regex.Replace(fileType, @"^(.*)\.(\w+)$", "$2");
+                fileType = fileType.ToUpper();
 
                 // Check certain files for accessibilty
                 string accessiblity = "Not Accessible";

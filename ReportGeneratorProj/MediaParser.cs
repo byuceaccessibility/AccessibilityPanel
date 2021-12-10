@@ -193,7 +193,7 @@
                                                     link.InnerText + video_found,
                                                     link.Attributes["href"].Value,
                                                     video_length,
-                                                    false,
+                                                    VideoParser.CheckTranscript(link),
                                                     false)); ;
                     }
                 }
@@ -229,7 +229,7 @@
                                                     link.InnerText + video_found,
                                                     link.Attributes["href"].Value,
                                                     video_length,
-                                                    cc,
+                                                    VideoParser.CheckTranscript(link),
                                                     cc));
                     }
                 }
@@ -264,7 +264,7 @@
                                                                         link.InnerText + video_found,
                                                                         link.Attributes["href"].Value,
                                                                         video_length,
-                                                                        cc,
+                                                                        VideoParser.CheckTranscript(link),
                                                                         cc));
                     }
                 }
@@ -466,7 +466,7 @@
                                                                         title + video_found,
                                                                         iframe.Attributes["src"].Value,
                                                                         video_length,
-                                                                        true,
+                                                                        VideoParser.CheckTranscript(iframe),
                                                                         true));
                     }
                 }
