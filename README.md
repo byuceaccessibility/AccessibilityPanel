@@ -1,2 +1,68 @@
-# AccessibilityPanel
- 
+# Report Generator
+
+## Introduction
+
+The **Report Generator** is the program we use to automate about 40% of an accessibility audit. After being given correct filepaths and canvas API tokens, this program has logic to scan HTML for many possible acceessiblity issues we often find in courses. This markdown will give a description of each file used in the proccess, psuedo code for each file, as well as psuedo code for the whole report generation.
+
+## Audit Process
+
+1. Recieve Course to audit.
+2. **Run Report Generator** through the Command Panel GUI.
+3. Breifly review generator excel report.
+4. Go through course by hand and add findings to the report previously generated.
+5. Fix findings and report completed items (update the excel report continously).
+6. Return accessibility audit.
+
+## High level Pseudo Code
+
+```
+BEGIN
+CreateReport() (WPFCommandPanel/GenReportEvents.cs)
+    Test conditions of course (WPFCommandPanel/GenReportEvents.cs, CanvasAPI.cs)
+        IF conditions not met THEN
+            Report not generatored
+        ENDIF
+    Create data structure (RGenteratorBase.cs)
+    FOR each page
+        Find accessibility issues (A11yParser.cs)
+        Get media information (MediaParser.cs)
+    ENDFOR
+    Translate data found to report using excel template (CreateExcelReport.cs)
+    Return Report (WPFCommandPanel/GenReportEvents.cs)
+END
+```
+
+## Project Files and Short Descriptions
+
+**[WPFCommandPanel/GenReportEvent.cs](source/GenReportEvents.cs)**
+: `CreateReport()` class serves as main function and Initiation of the report generation proccess. It contains the parent algorithm.
+
+**[A11yParser.cs](source/A11yParser.cs)**
+: This files contains the logic for finding the accessibility issues. It is the "meat" of the report generator. A list of automated findings is found in [A11yParser Logic](A11yParser%20Logic.md).
+
+**[LinkParser.cs](source/LinkParser.cs)**
+: This file is used to parse through links in a directory of html files. It is not used while looking in canvas courses. The Parser takes a given `<a>` html tag and returns the title, URL, and a status of wether the URL is working or recieving a number of HTML errors
+
+**[MediaParser.cs](source/MediaParser.cs)**
+: The Media Parser sorts through all videos displayed in a course via embbed video and specific video links finding Video ids, video lengths, closed captions, and transcripts. The following are video domains that the Media Parser is designed to search from: Brightcove, Kanoby, Alexander Street, BYU mediasite, Panopto, Youtube, Ambrose, Facebook, DailyMotion, and Vimeo. The Media Parser can also find information from inline video's.
+
+**[VideoParser.cs](source/VideoParser.cs)**
+: The Video Parser is a class of methods used to parse through videos and gain their information.
+
+**[CreateExcelReport.cs](source/CreateExcelReport.cs)**
+: Converts findings from A11yParser and MediaParser into rows in the [Excel Accessibility Review Template](CAR%20-%20Accessibility%20Review%20Template.xlsx) (Sheet: Accessibility Reveiw) using a data structure from [RGeneratorBase.cs](source/RGeneratorBase.cs).
+
+**[PanelOptions.cs](source/PanelOptions.cs)**
+: File/dir paths & user data
+
+**[CanvasApi.cs](source/CanvasApi.cs)**
+: classes to hold canvas info
+
+**[CourseDataStructures.cs](source/CourseDataStructures.cs)**
+: translates canvas data into a usable format
+
+**[SeleniumExtentions.cs](source/SeleniumExtentions.cs)**
+: Selenium - used to find media data by transversing the HTML.
+
+**[StringExtentions.cs](source/StringExtentions.cs)**
+: Helpful String Methods. Splits strings into useful information.
