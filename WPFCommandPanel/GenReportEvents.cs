@@ -42,7 +42,6 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.Cyan
                 };
-                TerminalOutput.Inlines.Add(run);
                 var template = MainWindow.AppWindow.Template;
                 var control = (LoadingSpinner)template.FindName("spinner", MainWindow.AppWindow);
                 control.Visibility = Visibility.Hidden;
@@ -66,7 +65,6 @@ namespace WPFCommandPanel
                     {
                         Foreground = System.Windows.Media.Brushes.Cyan
                     };
-                    TerminalOutput.Inlines.Add(run);
                 });
 
                 if (CanvasApi.CurrentDomain == null || CanvasApi.CurrentDomain == "")
@@ -102,7 +100,6 @@ namespace WPFCommandPanel
                         {
                             Foreground = System.Windows.Media.Brushes.Green
                         };
-                        TerminalOutput.Inlines.Add(run);
                     });
                     course = new CourseInfo(id);
                 }
@@ -115,7 +112,6 @@ namespace WPFCommandPanel
                         {
                             Foreground = System.Windows.Media.Brushes.Green
                         };
-                        TerminalOutput.Inlines.Add(run);
                     });
                     var script = File.ReadAllText(MainWindow.panelOptions.PowershellScriptDir + @"\FindReplace.ps1");
                     script = "param($path, $backupDir)process{\n" + script + "\n}";
@@ -128,7 +124,6 @@ namespace WPFCommandPanel
                         {
                             Foreground = System.Windows.Media.Brushes.Cyan
                         };
-                        TerminalOutput.Inlines.Add(run);
                     });
                     course = new CourseInfo(text);
                     directory = true;
@@ -140,7 +135,6 @@ namespace WPFCommandPanel
                     {
                         Foreground = System.Windows.Media.Brushes.Green
                     };
-                    TerminalOutput.Inlines.Add(run);
                 });
                 if (course == null || course.CourseCode == null)
                 {
@@ -149,11 +143,6 @@ namespace WPFCommandPanel
                 }
                 this.Dispatcher.Invoke(() =>
                 {
-                    Run run = new Run($"Beginning to parse pages\n")
-                    {
-                        Foreground = System.Windows.Media.Brushes.Green
-                    };
-                    TerminalOutput.Inlines.Add(run);
                 });
                 A11yParser ParseForA11y = new A11yParser();
                 MediaParser ParseForMedia = new MediaParser();
@@ -175,7 +164,6 @@ namespace WPFCommandPanel
                     {
                         Foreground = System.Windows.Media.Brushes.Green
                     };
-                    TerminalOutput.Inlines.Add(run);
                 });
                 var file_name_extention = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
                 CreateExcelReport GenReport = new CreateExcelReport(MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx");
@@ -187,7 +175,6 @@ namespace WPFCommandPanel
                     File.WriteAllText(MainWindow.panelOptions.HighScorePath, ParseForA11y.Data.Count().ToString());
                     Dispatcher.Invoke(() =>
                     {
-                        HighScoreBox.Text = "HighScore: " + File.ReadAllText(MainWindow.panelOptions.HighScorePath);
                     });
                 }
                 MainWindow.a11YRepair.SetCourse(course);
@@ -219,7 +206,6 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.Cyan
                 };
-                TerminalOutput.Inlines.Add(run);
             });
             //Get current page HTML and review it.
             Dictionary<string, string> page = new Dictionary<string, string>
@@ -242,7 +228,6 @@ namespace WPFCommandPanel
         {
             Dispatcher.Invoke(() =>
             {
-                TerminalOutput.Inlines.Add("Review of page finished.\n");
             });
         }
         private void CreatePageReport_Click(object sender, EventArgs e)

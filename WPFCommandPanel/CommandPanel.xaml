@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFCommandPanel"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="300"
       Title="CommandPanel"
       >
     <Page.Resources>
@@ -33,27 +33,42 @@
             <Setter Property="Background" Value="Gray"/>
         </Style>
         <Style TargetType="TextBlock">
-            
+
         </Style>
     </Page.Resources>
 
     <ScrollViewer>
-        
-    <Grid>
-        <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-            <GroupBox Grid.Column="1" 
-                  FontSize="15"
-                  Header="Reports">
-                <StackPanel Height="Auto">
-                    <Label>Course ID or Directory:
-                        <Label.ToolTip>
-                            <TextBlock
+        <StackPanel Height="Auto">
+            <Label
+                Content="Create A Report:"
+                FontSize="24"
+                FontWeight="Bold"
+                Padding="10px"
+                 />
+            <Label
+                Content="Domain:"
+                HorizontalAlignment="Center">
+            </Label>
+            <ComboBox
+                Name="Domain"
+                Text="Pick a domain..."
+                Margin="10 0 10 10"
+                MaxWidth="150"
+                HorizontalAlignment="Center"
+                IsEditable="True"
+                IsReadOnly="True"
+                SelectionChanged="ChangeDomain"
+                >
+                <ComboBoxItem Content="BYU Online" HorizontalAlignment="Left"/>
+                <ComboBoxItem Content="BYU IS Test" HorizontalAlignment="Left"/>
+                <ComboBoxItem Content="BYU Master Courses" HorizontalAlignment="Left"/>
+                <ComboBoxItem Content="BYU Online High School" HorizontalAlignment="Left"/>
+                <ComboBoxItem Content="Directory" HorizontalAlignment="Left"/>
+            </ComboBox>
+            <Label
+                HorizontalAlignment="Center">Course ID or Directory:
+                <Label.ToolTip>
+                    <TextBlock
                                 VerticalAlignment="Center"
                                 TextAlignment="Left"
                                 TextWrapping="WrapWithOverflow">
@@ -63,117 +78,46 @@
                                 <LineBreak/>
                                 <Bold>How to find the Correct Directory Path:</Bold><LineBreak/>
                                 The panel can make an accessibility report for a folder of HTML files. To create this report you would find the file path to the folder containing the HTML files, place that in the form field and select "Generate Report".
-                            </TextBlock>
-                        </Label.ToolTip>
-                    </Label>
-                    <TextBox Name="CourseID" 
-                         Margin="10 0 10 10"
-                         KeyDown="GenerateReport_KeyEnter"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Column="1" 
-                            Content="Generate Report" 
-                            Width="200" 
-                            HorizontalAlignment="Right" 
-                            Margin="0 0 10 0" 
-                            Height="25" 
-                            VerticalAlignment="Top"
-                            Click="GenerateReport_Click"/>
-                    </Grid>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0"
-                               MouseDoubleClick="OpenReportList_DoubleClick">
-                            Report List
-                            <Label.ToolTip>
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    TextAlignment="Left">
-                                    Double click to view the reports in File Explorer.
-                                </TextBlock>
-                            </Label.ToolTip>
-                        </Label>
-                        <ListBox Grid.Row="1"
-                         Margin="10 0 10 0" 
-                         Name="ReportList"
-                         MouseDoubleClick="ReportList_DoubleClick"
-                             MaxHeight="220"/>
-                        <Button Grid.Row="2"  Content="Move Reports" 
-                        Margin="10 10 10 0" 
-                        Width="125" 
-                        HorizontalAlignment="Right"
-                        Click="mReportsButton_Click"/>
-                    </Grid>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Grid.Row="1" 
-                      Grid.ColumnSpan="2"
-                      Header="Terminal Output" 
-                      FontSize="15">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="8*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                <ScrollViewer Grid.Row="0" 
-                              Margin="10" 
-                              Name="TextBlockScrollBar"
-                              ScrollChanged="TextInput_ScrollDown"
-                              >
-                        <Border BorderBrush="Gray"
-                                BorderThickness="2">
-                            <local:SelectableTextBlock  x:Name="TerminalOutput"
-                                    Background="Black" 
-                                    Foreground="#FF2EFF00"
-                                    TextWrapping="Wrap"
-                                    MaxHeight="240"/>
-                        </Border>
-                    </ScrollViewer>
-                    <Button Grid.Row="1"
-                        Margin="10 0 10 0"
-                        Width="100"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Content="Clear"
-                        Click="ClearButton_Click"/>
-                    <Button Grid.Row="1"
-                        Margin="10 0 10 0"
-                        Width="200"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Bottom"
-                        Content="Accessibility Course"
-                        Click="GoToAccessibility_Course"/>
-                    <TextBox Grid.Row="1" 
-                             Width="125" 
-                             HorizontalAlignment="Left"
-                             VerticalAlignment="Bottom"
-                             TextAlignment="Center"
-                             Margin="225 0 0 0" 
-                             Height="24" 
-                             Background="Gray" 
-                             Foreground="Black" 
-                             Text="Highscore: "
-                             Name="HighScoreBox"
-                             IsReadOnly="True"
-                             BorderBrush="Gray"/>
-                </Grid>
-            </GroupBox>
-        </Grid>
+                    </TextBlock>
+                </Label.ToolTip>
+            </Label>
+            <TextBox Name="CourseID"
+                MaxWidth="175"
+                Margin="50 0 50 10"
+                KeyDown="GenerateReport_KeyEnter"/>
+            <Button
+                Content="Generate Report" 
+                Width="200" 
+                HorizontalAlignment="Center" 
+                Margin="0 20 0 40" 
+                Height="25" 
+                VerticalAlignment="Top"
+                Click="GenerateReport_Click"/>
+            <Label 
+                HorizontalAlignment="Center"
+                MouseDoubleClick="OpenReportList_DoubleClick">
+                Report List
+                <Label.ToolTip>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        TextAlignment="Left">
+                        Double click to view the reports in File Explorer.
+                    </TextBlock>
+                </Label.ToolTip>
+            </Label>
+            <ListBox
+                    Margin="50 0 50 0"
+                    Name="ReportList"
+                    MouseDoubleClick="ReportList_DoubleClick"
+                    MinHeight="100"
+                    MaxHeight="220"/>
+            <Button
+                Content="Archive Reports"
+                HorizontalAlignment="Center"
+                Width="150"
+                Margin="20 10 20 20"
+                Click="Archive_Reports_Click"
+                />
+        </StackPanel>
     </ScrollViewer>
 </Page>

@@ -14,6 +14,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using My.AsyncObservCollect;
 using My.WPFControlWriter;
+using My.CanvasApi;
 
 namespace WPFCommandPanel
 {
@@ -32,7 +33,7 @@ namespace WPFCommandPanel
         public WebDriverWait wait;
         //Flag to quit a given opperation. Should add checks for it in various places so it can jsut end the event or funciton.
         public bool QuitThread = false;
-        
+
         public class PageReviewer
         {   //Object to review the current webpage for the user and hold the data. Is reset whenever they click the CreateReport button.
             public PageReviewer()
@@ -49,7 +50,7 @@ namespace WPFCommandPanel
         }
         public PageReviewer PageParser;
         //Class to work best with the Listbox and FileSystemWatcher together.
-        
+
 
         //Container for file info to be displayed
         public class FileDisplay
@@ -63,13 +64,13 @@ namespace WPFCommandPanel
             public string FullName { get; set; }
 
         }
-        
+
         //Init
         public CommandPanel()
         {
             InitializeComponent();
             //Set all console output to our own writer
-            Console.SetOut(new ControlWriter(TerminalOutput));
+            //Console.SetOut(new ControlWriter(TerminalOutput));
             FileWatcher = new FileSystemWatcher(MainWindow.panelOptions.ReportPath);
             //Setup the events for the filewatcher
             this.FileWatcher.EnableRaisingEvents = true;
@@ -85,31 +86,42 @@ namespace WPFCommandPanel
             ReportList.ItemsSource = file_paths;
             ReportList.DisplayMemberPath = "DisplayName";
             ReportList.SelectedValuePath = "FullName";
-            try
-            {
-                HighScoreBox.Text = "HighScore: " + File.ReadAllText(MainWindow.panelOptions.HighScorePath);
-            }
-            catch
-            {
-                Dispatcher.Invoke(() =>
-                {
-                    Run run = new Run("Error loading HighScore ...\n")
-                    {
-                        Foreground = System.Windows.Media.Brushes.Red
-                    };
-                    TerminalOutput.Inlines.Add(run);
-                });
-            }
+            //try
+            //{
+            //    HighScoreBox.Text = "HighScore: " + File.ReadAllText(MainWindow.panelOptions.HighScorePath);
+            //}
+            //catch
+            //{
+            //    Dispatcher.Invoke(() =>
+            //    {
+            //        Run run = new Run("Error loading HighScore ...\n")
+            //        {
+            //            Foreground = System.Windows.Media.Brushes.Red
+            //        };
+            //        TerminalOutput.Inlines.Add(run);
+            //    });
+            //}
             //PageParser = new PageReviewer();
+
         }
-        
+
+        private void ChangeDomain(object sender, SelectionChangedEventArgs e)
+        {
+            if (Domain.SelectedItem != null)
+            {
+                ComboBoxItem cbi = (ComboBoxItem)Domain.SelectedItem;
+                string selectedText = cbi.Content.ToString();
+                CanvasApi.ChangeDomain(selectedText);
+            }
+        }
+
 
         private void OpenReportList_DoubleClick(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(MainWindow.panelOptions.ReportPath);
         }
 
-        
+
         private void ReportList_DoubleClick(object sender, EventArgs e)
         {
             if (new FileInfo(ReportList.SelectedValue.ToString()).Exists)
@@ -125,7 +137,7 @@ namespace WPFCommandPanel
         private void mReportsButton_Click(object sender, EventArgs e)
         {
             //Insert code for mReports. May be easiest to create a POSH terminal and just copy paste the script over
-            using(PowerShell posh = PowerShell.Create())
+            using (PowerShell posh = PowerShell.Create())
             {
                 //I was to lazy to rewrite the function into c# and just import the POSH script.
                 string script = File.ReadAllText(MainWindow.panelOptions.PowershellScriptDir + "\\MoveReports.ps1");
@@ -136,31 +148,18 @@ namespace WPFCommandPanel
                     .AddArgument(MainWindow.panelOptions.BaseMoveReportsDir)
                     .AddArgument(MainWindow.panelOptions.A11yEmail);
                 Collection<PSObject> results = posh.Invoke();
-                foreach(var obj in results)
+                foreach (var obj in results)
                 {
                     Run run = new Run("Report:\n")
                     {
                         Foreground = System.Windows.Media.Brushes.Cyan
                     };
-                    TerminalOutput.Inlines.Add(run);
-                    TerminalOutput.Inlines.Add(obj.ToString().Remove(0,2).Replace("; ", "\n").Replace("=", ": ").Replace("}", "") + "\n");
+                    //TerminalOutput.Inlines.Add(run);
+                    //TerminalOutput.Inlines.Add(obj.ToString().Remove(0,2).Replace("; ", "\n").Replace("=", ": ").Replace("}", "") + "\n");
                 }
             }
         }
 
-        
-        private void ClearButton_Click(object sender, EventArgs e)
-        {
-            TerminalOutput.Text = "";
-        }
-        private void TextInput_ScrollDown(object sender, ScrollChangedEventArgs e)
-        {
-            if(e.ExtentHeightChange > 0)
-            {   
-                TextBlockScrollBar.ScrollToEnd();
-            }
-        }
-        
         private void FindReplace_Click(object sender, EventArgs e)
         {
             CommonOpenFileDialog prompt = new CommonOpenFileDialog();
@@ -187,8 +186,34 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.Cyan
                 };
-                TerminalOutput.Inlines.Add(run);
+                //TerminalOutput.Inlines.Add(run);
             });
+        }
+
+        private void Archive_Reports_Click(object sender, RoutedEventArgs e)
+        {
+            DirectoryInfo reports = new DirectoryInfo(MainWindow.panelOptions.ReportPath);
+            string currentDate =
+                DateTime.Now.Year.ToString() +
+                "-" +
+                DateTime.Now.Month.ToString() +
+                "-" +
+                DateTime.Now.Day.ToString();
+            string newDirPath = $"{MainWindow.panelOptions.ReportPath}\\{currentDate}";
+            DirectoryInfo newDirectory;
+            if (!Directory.Exists(newDirPath))
+            {
+                newDirectory = Directory.CreateDirectory(newDirPath);
+            }
+            else
+            {
+                newDirectory = new DirectoryInfo(newDirPath);
+            }
+            FileInfo[] reportFiles = reports.GetFiles();
+            foreach (FileInfo file in reportFiles)
+            {
+                file.MoveTo($"{newDirPath}\\{file.Name}");
+            }
         }
     }
 }
