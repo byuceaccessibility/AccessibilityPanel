@@ -66,3 +66,43 @@ END
 
 **[StringExtentions.cs](source/StringExtentions.cs)**
 : Helpful String Methods. Splits strings into useful information.
+
+# A11yParser Logic
+
+## Automated Findings
+
+Below is a list of the automated issues found by the report Generator. In the A11yParser file methods for each top level issue is called in the `ProcessContent()` function. The second levels are found using if/else statements and added to a list defined in the RParserBase class (lines 29 - 27) in RGeneratorBase.cs and the PageData class in CousrDataStructures.cs (lines 313 - 351)
+
+- **Image**
+  - **Banners**
+  - **Insufficient alt text**
+  - **alt text contains filenames**
+
+- **Color**
+  - **Color Contrast insufficient**
+
+- **Keyboard**
+
+- **Screen Reader**
+  - **Iframes**
+
+- **Media**
+
+- **Semantics**
+  - **Headers**
+  - **Misuses of HMTL tags**
+
+- **Links**
+  - **JavaScript Links are not accessible**
+  - **Empty Link tag**
+  - **Invisible Link (No visible text)**
+  - **Adjust Link Text**
+
+- **Table**
+  - **Streched Cells**
+  - **No Headers**
+  - **No scope attributes**
+  - **Empty table**
+  - **Complex tables**
+
+This is the current organization of accessibility issues we have so far. That being said, this organizational list is subject to change and we plan on implementing a better organization soon.
