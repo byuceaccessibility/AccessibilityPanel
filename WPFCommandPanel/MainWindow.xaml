@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WPFCommandPanel"
         mc:Ignorable="d"
         Title="A11yControlPanel v6.00" 
-        Height="800" 
-        Width="1000"
+        Height="600" 
+        Width="400"
         Background="Black"
         Style="{StaticResource CustomWindowStyle}"
         AllowsTransparency="False"
@@ -30,15 +30,14 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="95*"/>
+            <RowDefinition Height="164*"/>
+            <RowDefinition Height="199*"/>
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="25*"/>
-                    <ColumnDefinition Width="75*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
                         Padding="5,5,5,5"
@@ -50,54 +49,14 @@
                 <Button Grid.Column="1"
                         Padding="5,5,5,5"
                         VerticalAlignment="Top"
-                        Click="SwitchOptions">
+                        Click="OpenOptions">
                     Options
                 </Button>
-                <TextBlock Grid.Column="2"
-                           Text="Please choose your domain:"
-                           VerticalAlignment="Center"
-                           TextAlignment="Center"
-                           Foreground="White"/>
-                <Grid Grid.Column="3" 
-                              Name="RadioButtonGroup">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <RadioButton VerticalAlignment="Center" 
-                                     Grid.Column="0" 
-                                     GroupName="Domain" 
-                                     Content="BYU Online"
-                                     Checked="RadioButton_Checked"/>
-                    <RadioButton VerticalAlignment="Center" 
-                                        Grid.Column="1"    
-                                        GroupName="Domain" 
-                                        Content="BYU IS Test"
-                                        Checked="RadioButton_Checked"/>
-                    <RadioButton VerticalAlignment="Center" 
-                                     Grid.Column="2" 
-                                     GroupName="Domain" 
-                                     Content="BYU Master Courses"
-                                     Checked="RadioButton_Checked"/>
-                    <RadioButton VerticalAlignment="Center"
-                                     Grid.Column="3"
-                                     GroupName="Domain" 
-                                     Content="BYU Online High School"
-                                     Checked="RadioButton_Checked"/>
-                    <RadioButton VerticalAlignment="Center" 
-                                     Grid.Column="4" 
-                                     GroupName="Domain" 
-                                     Content="Directory"
-                                     Checked="RadioButton_Checked"/>
-                </Grid>
-                
+
             </Grid>
         </GroupBox>
         <Frame Grid.Row="1" Name="ShowPage" 
-           NavigationUIVisibility="Hidden"/>
+           NavigationUIVisibility="Hidden" Grid.RowSpan="2"/>
     </Grid>
 
 </Window>

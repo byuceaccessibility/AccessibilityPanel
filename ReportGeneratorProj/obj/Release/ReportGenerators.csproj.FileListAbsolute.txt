@@ -83,7 +83,6 @@ M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanel
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\StringExtentions.cs
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\VideoParser.cs
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\App.config
-M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\packages.config
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\ReportGenerators.exe.config
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\ReportGenerators.exe
 M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\A11yPanelCode\ReportGenerators\ReportGenerators.pdb
@@ -92,3 +91,4 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Re
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.exe
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.pdb
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.csproj.AssemblyReference.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Release\ReportGenerators.exe.config

@@ -139,7 +139,6 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.White
                 };
-                TerminalOutput.Inlines.Add(run);
             });
             Dispatcher.Invoke(() =>
             {
@@ -147,7 +146,6 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.DarkGoldenrod
                 };
-                TerminalOutput.Inlines.Add(run);
             });
             StoreWebElement store = new StoreWebElement();
             for (int i = 0; i < number_of_modules; i++)
@@ -175,12 +173,10 @@ namespace WPFCommandPanel
                 }
                 Dispatcher.Invoke(() =>
                 {
-                    TerminalOutput.Inlines.Remove(TerminalOutput.Inlines.LastInline);
                     Run run = new Run($"{i} / {number_of_modules} . . .\n")
                     {
                         Foreground = System.Windows.Media.Brushes.DarkGoldenrod
                     };
-                    TerminalOutput.Inlines.Add(run);
                 });
                 try
                 {

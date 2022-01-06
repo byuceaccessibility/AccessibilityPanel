@@ -71,6 +71,11 @@ namespace WPFCommandPanel
         {
             ShowPage.Navigate(optionsPage);
         }
+        private void OpenOptions(object sender, RoutedEventArgs e)
+        {
+            string pathToOptions = $"{System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)}\\options.json";
+            System.Diagnostics.Process.Start(pathToOptions);
+        }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -83,7 +88,7 @@ namespace WPFCommandPanel
                 {
                     Foreground = System.Windows.Media.Brushes.Green
                 };
-                CommandPanelObj.TerminalOutput.Inlines.Add(run);
+                //CommandPanelObj.TerminalOutput.Inlines.Add(run);
             });
         }
     }

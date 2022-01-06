@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/tidyhtml5managedrepack.1.1.4/build/tidy.x64.dll")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("packages/tidyhtml5managedrepack.1.1.4/build/tidy.x86.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("tidy.x64.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("tidy.x86.dll")]
 
 
