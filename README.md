@@ -1,8 +1,8 @@
 # How to install the Accessibility Panel on a work computer
 
-1.	Go to `M:\DESIGNER\Content Editors·ELTA\Accessibility Assistants\A11y Panel` and run the RunSetUp exe file.
+1.	Go to `M:\DESIGNER\Content Editors·ELTA\Accessibility Assistants\A11y Panel`, open the `AccessibilitySetup` folder, and run the `RunSetUp.exe` file.
      - Make sure to enter Y for everything. You can enter A for yes to all.
-2.  After the `RunSetUp.exe` has finished running, you will find a new shortcut on your screen titled `Accessibility Panel` and a new folder titled `AccessibilityTools`. Everything the `RunSetUp.exe` downloaded is contained on that file on your desktop.
+2.  After the `RunSetUp.exe` has finished running, you will find a new shortcut on your screen titled `Accessibility Panel` and a new folder titled `AccessibilityTools`. Everything the `RunSetUp.exe` downloaded is contained on that folder on your desktop.
 3.	To run the panel click on the new shortcut titled `Accessibility Panel`
     - Running the panel using the shortcut will automatically check for updates upon starting.
 4.	Once the panel is running you need to setup the options. In the top right navigate to the `Options` tab. This will open a text editor we can use to input required values.
