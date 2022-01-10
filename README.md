@@ -73,6 +73,7 @@ CreateReport() (WPFCommandPanel/GenReportEvents.cs)
     FOR each page
         Find accessibility issues (A11yParser.cs)
         Get media information (MediaParser.cs)
+        Get document information (DocumentParser.cs)
     ENDFOR
     Translate data found to report using excel template (CreateExcelReport.cs)
     Return Report (WPFCommandPanel/GenReportEvents.cs)
@@ -96,8 +97,11 @@ END
 **[VideoParser.cs](ReportGeneratorProj/VideoParser.cs)**
 : The Video Parser is a class of methods used to parse through videos and gain their information.
 
+**[DocumentParser.cs](ReportGeneratorProj/DocumentParser.cs)**
+: The Document Parser is a class of methods used to parse through documents and gain their information.
+
 **[CreateExcelReport.cs](ReportGeneratorProj/CreateExcelReport.cs)**
-: Converts findings from A11yParser and MediaParser into rows in the [Excel Accessibility Review Template](CAR%20-%20Accessibility%20Review%20Template.xlsx) (Sheet: Accessibility Review) using a data structure from [RGeneratorBase.cs](source/RGeneratorBase.cs).
+: Converts findings from A11yParser, MediaParser, and DocumentParser into rows in the [Excel Accessibility Review Template](CAR%20-%20Accessibility%20Review%20Template.xlsx) (Sheet: Accessibility Review) using a data structure from [RGeneratorBase.cs](source/RGeneratorBase.cs).
 
 **[PanelOptions.cs](ReportGeneratorProj/PanelOptions.cs)**
 : File/dir paths & user data
