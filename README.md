@@ -1,3 +1,33 @@
+# How to install the Accessibility Panel on a work computer
+
+1.	Go to `M:\DESIGNER\Content Editors·ELTA\Accessibility Assistants\A11y Panel` and run the RunSetUp exe file.
+     - Make sure to enter Y for everything. You can enter A for yes to all.
+2.  After the `RunSetUp.exe` has finished running, you will find a new shortcut on your screen titled `Accessibility Panel` and a new folder titled `AccessibilityTools`. Everything the `RunSetUp.exe` downloaded is contained on that file on your desktop.
+3.	To run the panel click on the new shortcut titled `Accessibility Panel`
+    - Running the panel using the shortcut will automatically check for updates upon starting.
+4.	Once the panel is running you need to setup the options. In the top right navigate to the `Options` tab. This will open a text editor we can use to input required values.
+    - Many of values should already be filled in. In order for the panel to generate a report you will need to enter in your user specific token for each BYU Canvas domain you would like to run a report for a course in.
+    - For example
+    - ```json
+        "BYUOnlineCreds":  {
+                           "BaseUri":  "https://byu.instructure.com",
+                           "Token":  "<YOUR-USER-TOKEN-GOES-HERE>"
+                       },
+      ```
+    - Go to `Canvas API Token` if you are unsure about how to get a Canvas API token for each of the BYU Canvas domains.
+
+
+## Canvas API Token
+
+Before you can create any reports for a canvas course you need an access token. 
+1.	Go to the canvas domain you want a token for (such as https://byu.instructure.com/).
+2.	Go to `Account` (top left corner).
+3.	Go to `Settings`.
+4.	Under section called `Approved Integrations` click `New Access Token`.
+5.	Set an expiration date or leave it blank for no expiration. Name it whatever you want.
+6.	Copy paste generated token into the correct field in the options tab of panel.
+7.	If you lose it the token you cannot get it back. Just delete it and create a new one.
+
 # Report Generator
 
 ![Accessibility Panel User Interface](assets/images/GUI.png)
