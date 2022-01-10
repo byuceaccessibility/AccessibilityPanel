@@ -1,5 +1,7 @@
 # Report Generator
 
+![Accessibility Panel User Interface](assets/images/GUI.png)
+
 ## Introduction
 
 The **Report Generator** is the program we use to automate about 40% of an accessibility audit. After being given correct filepaths and canvas API tokens, this program has logic to scan HTML for many possible accessibility issues we often find in courses. This markdown will give a description of each file used in the process, pseudo code for each file, as well as pseudo code for the whole report generation.
