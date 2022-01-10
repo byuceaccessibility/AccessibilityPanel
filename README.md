@@ -8,14 +8,29 @@
 4.	Once the panel is running you need to setup the options. Navigate to the `Options` tab in the top right of the window. This will open a text editor we can use to input required values.
     - Many of values should already be filled in. In order for the panel to generate a report, you will need to enter in your user specific token for each BYU Canvas domain.
     - For example
-    - ```json
+      - ```json
         "BYUOnlineCreds":  {
                            "BaseUri":  "https://byu.instructure.com",
                            "Token":  "<YOUR-USER-TOKEN-GOES-HERE>"
-                       },
-      ```
+                           },
+        ```
     - Go to `Canvas API Token` if you are unsure about how to get a Canvas API token for each of the BYU Canvas domains.
 
+## How to find the Course ID
+
+The course ID is found in the URL after the domain and the word "courses" (example: [https://byuismastercourses.instructure.com/courses/**1335**](https://byuismastercourses.instructure.com/courses/1335)).
+
+To generate report, place the course ID (**1335** for the example) in the form field and select "Generate Report". Remember to select a domain for the course chosen. **A report will not be generated unless a domain is selected.**
+
+## How to find the Correct Directory Path
+
+The panel can make an accessibility report for a folder of HTML files. To create this report you would find the file path to the folder containing the HTML files, place that in the form field and select "Generate Report".
+
+## Quick Tips
+
+### Opening the Report directory in your folder viewer
+
+The Report folder is in a sub folder of the main `AccessibilityTools` folder, specifically `.../AccessibilityTools/ReportGenerators-master/Reports`. A quick way to open this folder is to click on the `Report List` heading above the reports on the Accessibility Panel's user interface.
 
 ## Canvas API Token
 
