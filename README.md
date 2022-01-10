@@ -157,3 +157,39 @@ Below is a list of the automated issues found by the report Generator. In the A1
   - **Complex tables**
 
 This is the current organization of accessibility issues we have so far. That being said, this organizational list is subject to change and we plan on implementing a better organization soon.
+
+# How to setup code editing for this project:
+
+Clone the following GitHub repository: https://github.com/byuisaccessibility/AccessibilityPanel. I recommend just installing GitHub Desktop to manage using git. 
+
+1. Create a blank Visual Studio solution:
+    1.  `Create New Project`
+    2.  `Other Project Types`
+    3.  `Visual Studio Solutions`
+    4.  `Blank Solution`
+2. Name it A11yPanelCode.
+3. Go to the solution explorer (`ctrl+alt+L` if you can’t see it) and do the following in this order:
+    1. Right click on `Solution`.
+    2. Click `Add Existing Project`.
+    3. Navigate to the directory you cloned the GitHub repository.
+    4. Go inside the `ReportGeneratorProj` directory and double click the `ReportGenerators.csproj` file.	
+4. After adding the ReportGeneratorProj repeat the previous steps for adding the WPFCommandPanel project.
+5. Once both projects are added you will need to change the start-up project.
+    1. Right click on `Solution`
+    2. Click on `Properties`
+    3. In properties go to the Startup Project section
+    4. Under Single startup project make sure `WPFCommandPanel` is selected
+
+6. Go into your `AccessibilityTools` directory -> A11yPanel -> copy the `options.json` there -> paste it to the GitHub respository that was cloned at the following path: `WPFCommandPanel\bin\Debug`
+7. You should now be able to build the project. 
+
+## Possible Errors
+- Type or namespace could not be found
+- Try deleting everything and remaking the project and re-clone it from github
+- Try right clicking solution and hit Restore NuGet Packages
+- Go to tools -> NuGet Package Manager -> Package Manager Console and run the following:
+  - Update-Package –reinstall
+
+Make sure to push all changes to git so everyone editing the project can see the changes. Also make sure to pull changes from git whenever someone else changes things. 
+
+To update the “production” exe just change the build configuration to release (to the left of the start button in Visual Studio there is a dropdown that should show Debug, change it to Release and then rebuild project). You can only run in debugging if it is set to Debug.
