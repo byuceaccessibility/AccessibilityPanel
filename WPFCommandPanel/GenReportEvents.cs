@@ -166,7 +166,8 @@ namespace WPFCommandPanel
                     };
                 });
                 var file_name_extention = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
-                CreateExcelReport GenReport = new CreateExcelReport(MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx");
+                var file_path = MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx";
+                CreateExcelReport GenReport = new CreateExcelReport(file_path);
                 GenReport.CreateReport(ParseForA11y.Data, ParseForMedia.Data, ParseForLinks?.Data, ParseForFiles.Data);
                 s.Stop();
                 ParseForMedia.Chrome.Quit();
@@ -179,6 +180,24 @@ namespace WPFCommandPanel
                 }
                 MainWindow.a11YRepair.SetCourse(course);
                 e.Result = $"Report generated.\nTime taken: {s.Elapsed.ToString(@"hh\:mm\:ss")} for {course.PageHtmlList.Count()} pages\n";
+
+                // Message for finished Report
+                MessageBoxResult result = MessageBox.Show(
+                    "The Accessibility Panel has finished checking your course! Would you like to review it now?",
+                    "Accessibility Panel",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Information
+                    );
+                switch(result)
+                {
+                    case MessageBoxResult.Yes:
+                        System.Diagnostics.Process.Start(file_path);
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    default:
+                        break;
+                }
             }catch(Exception ex)
             {
                 e.Result = ex.Message + '\n' + ex.ToString() + '\n' + ex.StackTrace;

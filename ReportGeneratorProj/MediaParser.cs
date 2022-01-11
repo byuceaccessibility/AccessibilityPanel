@@ -35,7 +35,7 @@
             var chromeDriverService = ChromeDriverService.CreateDefaultService(PathToChromedriver);
             chromeDriverService.HideCommandPromptWindow = true;
             var ChromeOptions = new ChromeOptions();
-            //ChromeOptions.AddArguments("headless", "muteaudio");
+            ChromeOptions.AddArguments("headless", "muteaudio");
             Chrome = new ChromeDriver(chromeDriverService, ChromeOptions);
             Wait = new WebDriverWait(Chrome, new TimeSpan(0, 0, 5));                        
         }
