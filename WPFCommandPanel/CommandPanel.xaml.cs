@@ -215,5 +215,10 @@ namespace WPFCommandPanel
                 file.MoveTo($"{newDirPath}\\{file.Name}");
             }
         }
+
+        private void Accessibility_Help_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://byuceaccessibility.github.io/");
+        }
     }
 }
