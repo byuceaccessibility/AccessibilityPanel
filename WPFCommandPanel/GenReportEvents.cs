@@ -30,6 +30,7 @@ namespace WPFCommandPanel
             {
                 WorkerReportsProgress = true
             };
+
             worker.DoWork += CreateReport;
             worker.RunWorkerCompleted += ReportFinished;
             worker.RunWorkerAsync();
@@ -77,7 +78,9 @@ namespace WPFCommandPanel
                 }
                 var text = this.Dispatcher.Invoke(() =>
                 {
-                    return CourseID.Text;
+                    string courseId = CourseID.Text;
+                    CourseID.Text = string.Empty;
+                    return courseId;
                 });
                 if (text == null)
                 {
