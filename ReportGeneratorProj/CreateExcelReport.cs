@@ -141,10 +141,6 @@
                     case "empty link tag":
                         A11yAddToCell("Link", "Broken Link", data.Text, html: (data as PageA11yData).html);
                         break;
-                    // FIXME: Document Parsing
-                    //case "check document accessibility":
-                    //    A11yAddToCell("Link", "Check Document Accessibility", data.Text, html: (data as PageA11yData).html);
-                    //    break;
                     case "needs a title":
                         A11yAddToCell("Semantics", "Missing title/label", $"{data.Element} needs a title attribute\nID: {data.Id}", html: (data as PageA11yData).html);
                         break;
@@ -162,6 +158,9 @@
                         break;
                     case "check if header is meant to be invisible and is not a duplicate":
                         A11yAddToCell("Semantics", "Improper Headings", $"Invisible header:\n{data.Text}", html: (data as PageA11yData).html);
+                        break;
+                    case "header sturture out of logical order":
+                        A11yAddToCell("Semantics", "Improper Headings", $"Header Structure may be out of a logical order starting at...\n{data.Text}", html: (data as PageA11yData).html);
                         break;
                     case "no transcript found":
                         A11yAddToCell("Media", "Transcript Needed", data.Text, 5, 5, 5, html: (data as PageA11yData).html);

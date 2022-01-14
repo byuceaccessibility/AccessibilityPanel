@@ -1,6 +1,7 @@
 ﻿namespace ReportGenerators
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -632,7 +633,7 @@
                 return;
             }
             foreach (var header in header_list)
-            {
+            {   // Invisible Header, possibly duplicated
                 if (header.Attributes["class"]?.Value?.Contains("screenreader-only") == true)
                 {
                     lock (Data)
@@ -641,6 +642,26 @@
                     }
                 }
             }
+            // Check order
+            int current_header_level = 1;
+            foreach (var header in header_list)
+            {
+                string resultString = Regex.Match(header.Name, @"\d+").Value;
+                int header_number = Int32.Parse(resultString);
+                if (current_header_level >= header_number || (current_header_level + 1) == header_number)
+                {
+                    current_header_level = header_number;
+                }
+                else
+                {
+                    lock (Data)
+                    {
+                        Data.Add(new PageA11yData(PageDocument.Location, "Header", "", $"Heading Level {header_number}:\n{header.InnerText}", "Header sturture out of logical order", 1, header.XPath));
+                    }
+                }
+                break;
+            }
+
         }
         private void ProcessSemantics(DataToParse PageDocument)
         {
