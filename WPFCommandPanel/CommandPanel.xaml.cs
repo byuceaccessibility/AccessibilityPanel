@@ -220,5 +220,10 @@ namespace WPFCommandPanel
         {
             System.Diagnostics.Process.Start("https://byuceaccessibility.github.io/");
         }
+
+        private void UpdateCurrentProgress_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://byu.app.box.com/file/854963586136?s=jnyv07ojiqb234l3ywxxhs7r7m5nk2nf&utm_campaign=collab%20auto%20accept%20user&utm_medium=email&utm_source=trans");
+        }
     }
 }

@@ -119,6 +119,12 @@
                 Click="Archive_Reports_Click"
                 />
             <Button
+                Content="Update Current Progress"
+                HorizontalAlignment="Center"
+                Width="175"
+                Click="UpdateCurrentProgress_Click"
+                />
+            <Button
                 Content="Accessibility Help"
                 HorizontalAlignment="Center"
                 Width="100"
