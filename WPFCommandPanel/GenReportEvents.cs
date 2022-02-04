@@ -16,6 +16,7 @@ namespace WPFCommandPanel
 {
     public partial class CommandPanel : Page
     {
+        InfoLog logger = new InfoLog();
 
         private void GenerateReport_KeyEnter(object sender, KeyEventArgs k)
         {
@@ -46,6 +47,7 @@ namespace WPFCommandPanel
                 var template = MainWindow.AppWindow.Template;
                 var control = (LoadingSpinner)template.FindName("spinner", MainWindow.AppWindow);
                 control.Visibility = Visibility.Hidden;
+                logger.Report($"{e.Result}");
             });
         }
         private void CreateReport(object sender, DoWorkEventArgs e)
@@ -60,12 +62,14 @@ namespace WPFCommandPanel
                 });
                 var s = new System.Diagnostics.Stopwatch();
                 s.Start();
+
                 this.Dispatcher.Invoke(() =>
                 {
                     Run run = new Run($"Generating Report\n")
                     {
                         Foreground = System.Windows.Media.Brushes.Cyan
                     };
+                    logger.Report($"Generating Report");
                 });
 
                 if (CanvasApi.CurrentDomain == null || CanvasApi.CurrentDomain == "")
@@ -104,6 +108,7 @@ namespace WPFCommandPanel
                             Foreground = System.Windows.Media.Brushes.Green
                         };
                     });
+                    logger.Report($"Loading canvas information");
                     course = new CourseInfo(id);
                 }
                 else
@@ -115,6 +120,7 @@ namespace WPFCommandPanel
                         {
                             Foreground = System.Windows.Media.Brushes.Green
                         };
+                        logger.Report($"Running basic Fund Replace on directory");
                     });
                     var script = File.ReadAllText(MainWindow.panelOptions.PowershellScriptDir + @"\FindReplace.ps1");
                     script = "param($path, $backupDir)process{\n" + script + "\n}";
@@ -127,6 +133,7 @@ namespace WPFCommandPanel
                         {
                             Foreground = System.Windows.Media.Brushes.Cyan
                         };
+                        logger.Report($"Find Replace on {text} finished. \nBack up can be found at {MainWindow.panelOptions.CourseBackupDir}");
                     });
                     course = new CourseInfo(text);
                     directory = true;
@@ -138,6 +145,7 @@ namespace WPFCommandPanel
                     {
                         Foreground = System.Windows.Media.Brushes.Green
                     };
+                    logger.Report($"Created course object");
                 });
                 if (course == null || course.CourseCode == null)
                 {
@@ -167,6 +175,7 @@ namespace WPFCommandPanel
                     {
                         Foreground = System.Windows.Media.Brushes.Green
                     };
+                    logger.Report($"Finished parsing pages, creating file");
                 });
                 var file_name_extention = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
                 var file_path = MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx";
@@ -183,6 +192,7 @@ namespace WPFCommandPanel
                 }
                 MainWindow.a11YRepair.SetCourse(course);
                 e.Result = $"Report generated.\nTime taken: {s.Elapsed.ToString(@"hh\:mm\:ss")} for {course.PageHtmlList.Count()} pages\n";
+                logger.Report($"{e.Result}");
 
                 // Message for finished Report
                 MessageBoxResult result = MessageBox.Show(
@@ -204,6 +214,7 @@ namespace WPFCommandPanel
             }catch(Exception ex)
             {
                 e.Result = ex.Message + '\n' + ex.ToString() + '\n' + ex.StackTrace;
+                logger.Report($"{e.Result}");
             }
         }
         private void ReviewPage_Click(object sender, EventArgs e)

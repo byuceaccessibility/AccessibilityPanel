@@ -41,5 +41,6 @@
     "PowershellScriptDir":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\PowerShell",
     "FirefoxDriverPath":  "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\PowerShell\\Modules\\SeleniumTest",
     "JsonDataDir":  "M:\\DESIGNER\\Content EditorsELTA\\Accessibility Assistants\\JSON_DATA\\Accessibility",
-    "HighScorePath":  "M:\\DESIGNER\\Content EditorsELTA\\Accessibility Assistants\\A11y Panel\\Source Folders\\HIGHSCORE.txt"
+    "HighScorePath":  "M:\\DESIGNER\\Content EditorsELTA\\Accessibility Assistants\\A11y Panel\\Source Folders\\HIGHSCORE.txt",
+    "LogPathLocal": "C:\\Users\\nltingey\\Desktop\\AccessibilityTools\\A11yPanel\\Log.txt"
 }
