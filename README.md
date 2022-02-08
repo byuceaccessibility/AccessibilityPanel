@@ -193,3 +193,70 @@ Clone the following GitHub repository: https://github.com/byuisaccessibility/Acc
 Make sure to push all changes to git so everyone editing the project can see the changes. Also make sure to pull changes from git whenever someone else changes things. 
 
 To update the “production” exe just change the build configuration to release (to the left of the start button in Visual Studio there is a dropdown that should show Debug, change it to Release and then rebuild project). You can only run in debugging if it is set to Debug.
+
+# Known Possible Errors
+
+These are known errors that have been detected and solved for the BYU CE Accessibility Panel. For the sake of debugging an error log is created on local machines for each panel. That error log is located at `.../Desktop/AccessibilityTools/A11yPanel/Log.txt`.
+
+## Chrome Binary error
+
+```txt
+Log Entry : 10:10:52 AM Tuesday, February 8, 2022
+  :
+  : The file C:\Users\nltingey\Desktop\AccessibilityTools\PowerShell\Modules\SeleniumTest\chromedriver.exe does not exist. The driver can be downloaded at http://chromedriver.storage.googleapis.com/index.html
+OpenQA.Selenium.DriverServiceNotFoundException: The file C:\Users\nltingey\Desktop\AccessibilityTools\PowerShell\Modules\SeleniumTest\chromedriver.exe does not exist. The driver can be downloaded at http://chromedriver.storage.googleapis.com/index.html
+   at OpenQA.Selenium.DriverService..ctor(String servicePath, Int32 port, String driverServiceExecutableName, Uri driverServiceDownloadUrl)
+   at OpenQA.Selenium.Chrome.ChromeDriverService..ctor(String executablePath, String executableFileName, Int32 port)
+   at ReportGenerators.MediaParser..ctor() in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\MediaParser.cs:line 35
+   at WPFCommandPanel.CommandPanel.CreateReport(Object sender, DoWorkEventArgs e) in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\GenReportEvents.cs:line 159
+   at OpenQA.Selenium.DriverService..ctor(String servicePath, Int32 port, String driverServiceExecutableName, Uri driverServiceDownloadUrl)
+   at OpenQA.Selenium.Chrome.ChromeDriverService..ctor(String executablePath, String executableFileName, Int32 port)
+   at ReportGenerators.MediaParser..ctor() in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\MediaParser.cs:line 35
+   at WPFCommandPanel.CommandPanel.CreateReport(Object sender, DoWorkEventArgs e) in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\GenReportEvents.cs:line 159
+-------------------------------
+```
+
+or...
+
+```txt
+Log Entry : 10:14:57 AM Tuesday, February 8, 2022
+  :
+  : session not created: This version of ChromeDriver only supports Chrome version 89
+Current browser version is 97.0.4692.99 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe (SessionNotCreated)
+System.InvalidOperationException: session not created: This version of ChromeDriver only supports Chrome version 89
+Current browser version is 97.0.4692.99 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe (SessionNotCreated)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.StartSession(ICapabilities desiredCapabilities)
+   at OpenQA.Selenium.Remote.RemoteWebDriver..ctor(ICommandExecutor commandExecutor, ICapabilities desiredCapabilities)
+   at OpenQA.Selenium.Chrome.ChromeDriver..ctor(ChromeDriverService service, ChromeOptions options, TimeSpan commandTimeout)
+   at OpenQA.Selenium.Chrome.ChromeDriver..ctor(ChromeDriverService service, ChromeOptions options)
+   at ReportGenerators.MediaParser..ctor() in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\MediaParser.cs:line 39
+   at WPFCommandPanel.CommandPanel.CreateReport(Object sender, DoWorkEventArgs e) in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\GenReportEvents.cs:line 159
+   at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.Remote.RemoteWebDriver.StartSession(ICapabilities desiredCapabilities)
+   at OpenQA.Selenium.Remote.RemoteWebDriver..ctor(ICommandExecutor commandExecutor, ICapabilities desiredCapabilities)
+   at OpenQA.Selenium.Chrome.ChromeDriver..ctor(ChromeDriverService service, ChromeOptions options, TimeSpan commandTimeout)
+   at OpenQA.Selenium.Chrome.ChromeDriver..ctor(ChromeDriverService service, ChromeOptions options)
+   at ReportGenerators.MediaParser..ctor() in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\MediaParser.cs:line 39
+   at WPFCommandPanel.CommandPanel.CreateReport(Object sender, DoWorkEventArgs e) in C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\GenReportEvents.cs:line 159
+```
+
+Both of theses errors cause the panel to crash unexpectedly. They originate from an issue with the chrome driver missing or the use of an incompatible version. To fix this issue you must download and replace our existing `chromedriver.exe` with a newer version. On local machines, the path to this file is `...\Desktop\AccessibilityTools\PowerShell\Modules\SeleniumTest`. The path to the source file, where the panel updates from, is `M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\Source Folders\PowerShell\Modules\SeleniumTest`.
+
+1. Update and check the current version of the chrome browser of your computer
+    1. Open the Chrome browser
+    1. Go to settings
+    1. Go to the `About Chrome` section on the left hand side.
+    1. See something like `Version 97.0.4692.99 (Official Build) (64-bit)`
+
+1. Download the `chromedriver.exe` matching chromes version from above.
+    1. Go to [Chrome Driver Downloads](https://chromedriver.chromium.org/downloads)
+    1. Under `Current Releases` Click the link for the version matching the major build version
+        - ex: `If you are using Chrome version 97, please download ChromeDriver 97.0.4692.71`
+    1. Download the zip folder titled, `chromedriver_win32.zip`
+    1. Extract the folder
+    1. Replace the `chromedriver.exe` with the old one in the M:// Drive
+
+If the problem still exists delete the `chromedriver.exe` on the local machines and update. This will ensure the new `chromedriver.exe` is being copied.
