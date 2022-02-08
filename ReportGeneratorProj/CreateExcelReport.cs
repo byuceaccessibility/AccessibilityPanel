@@ -9,6 +9,7 @@
     using My.StringExtentions;
     using Newtonsoft.Json;
     using System.Reflection;
+    using My.CanvasApi;
 
     public class CreateExcelReport
     {   //Class to take care of creating the report
@@ -48,7 +49,7 @@
             public string html { get; set; }
             public string Url { get; set; }
         }
-        public void CreateReport(List<PageData> A11yData, List<PageData> MediaData, List<PageData> LinkData, List<PageData> FileData)
+        public string CreateReport(List<PageData> A11yData, List<PageData> MediaData, List<PageData> LinkData, List<PageData> FileData)
         {   //Public method to create the report from any input (can put null in place of any of the lists if you only need a certain input).
             if (null != A11yData)
             {
@@ -76,7 +77,7 @@
             var i = 1;
             while (new FileInfo(Destination).Exists)
             {
-                var new_destination = Destination.Replace(".xlsx", $"_V{i}.xlsx");
+                string new_destination = Destination.Replace(".xlsx", $"_V{i}.xlsx");
                 if (!(new FileInfo(new_destination).Exists))
                 {
                     Destination = new_destination;
@@ -115,6 +116,8 @@
             //Save and dispose
             Excel.SaveAs(new FileInfo(Destination));
             Excel.Dispose();
+
+            return Destination;
         }
         private void AddA11yData(List<PageData> data_list)
         {   //This is the most complicated one to add to the excel document and so uses the helper function
@@ -124,9 +127,13 @@
             Cells = Excel.Workbook.Worksheets[1].Cells;
             foreach (var data in data_list)
             {
+                string page_title = CanvasApi.GetLocationTitle(data.Location);
                 Cells[RowNumber, 2].Value = "Not Started";
                 Cells[RowNumber, 3].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
-                Cells[RowNumber, 3].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));        
+                Cells[RowNumber, 3].Value = page_title;
+                Cells[RowNumber, 3].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
+                Cells[RowNumber, 3].Style.Font.UnderLine = true;
+                Cells[RowNumber, 3].Style.Font.Color.SetColor(0, 36, 0, 196);
                 switch ((data as PageA11yData).Issue.ToLower())
                 {
                     case "adjust link text":
@@ -159,8 +166,8 @@
                     case "check if header is meant to be invisible and is not a duplicate":
                         A11yAddToCell("Semantics", "Improper Headings", $"Invisible header:\n{data.Text}", html: (data as PageA11yData).html);
                         break;
-                    case "header sturture out of logical order":
-                        A11yAddToCell("Semantics", "Improper Headings", $"Header Structure may be out of a logical order starting at...\n{data.Text}", html: (data as PageA11yData).html);
+                    case "header structure out of logical order":
+                        A11yAddToCell("Semantics", "Improper Headings", $"Header structure may be out of a logical order starting at...\n{data.Text}", html: (data as PageA11yData).html);
                         break;
                     case "no transcript found":
                         A11yAddToCell("Media", "Transcript Needed", data.Text, 5, 5, 5, html: (data as PageA11yData).html);
@@ -225,7 +232,10 @@
             foreach (var data in data_list)
             {
                 Cells[RowNumber, 2].Value = data.Element;
-                Cells[RowNumber, 3].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
+                string page_title = CanvasApi.GetLocationTitle(data.Location);
+                Cells[RowNumber, 3].Value = page_title;
+                Cells[RowNumber, 3].Style.Font.UnderLine = true;
+                Cells[RowNumber, 3].Style.Font.Color.SetColor(0, 36, 0, 196);
                 Cells[RowNumber, 3].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
                 if ((from cell in Cells["D:D"] where cell.Value?.ToString() == data.Id select true).Count(c => c == true) > 0
                     && data.Id != ""
@@ -297,8 +307,11 @@
                 // Enter Data into Row
                 Cells[RowNumber, 2].Value = data.Text;
                 Cells[RowNumber, 3].Value = fileType;
-                Cells[RowNumber, 4].Value = data.Location.CleanSplit("/").LastOrDefault().CleanSplit("\\").LastOrDefault();
+                string page_title = CanvasApi.GetLocationTitle(data.Location);
+                Cells[RowNumber, 4].Value = page_title;
                 Cells[RowNumber, 4].Hyperlink = new System.Uri(Regex.Replace(data.Location, "api/v\\d/", ""));
+                Cells[RowNumber, 4].Style.Font.UnderLine = true;
+                Cells[RowNumber, 4].Style.Font.Color.SetColor(0, 36, 0, 196);
                 Cells[RowNumber, 5].Value = data.Element;
                 Cells[RowNumber, 5].Hyperlink = new System.Uri(data.Element);
                 Cells[RowNumber, 6].Value = accessiblity;

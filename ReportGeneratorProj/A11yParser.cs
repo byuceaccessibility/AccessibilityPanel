@@ -233,6 +233,20 @@
             {
                 var alt = image.Attributes["alt"]?.Value; //Get Alt attribute and set as "alt"
                 var src = image.Attributes["src"]?.Value; //Get SRC attribute and set as "src"
+
+                // Check if image is decorative, This may make all src and parent class obsolete
+                string data_decorative = image.Attributes["data-decorative"]?.Value;
+                string role = image.Attributes["role"]?.Value;
+                bool decorative = false;
+                if (data_decorative != null)
+                {
+                    if (data_decorative == "true") decorative = true;
+                }
+                else if (role != null)
+                {
+                    if (role == "presentation") decorative = true;
+                }
+
                 var parentClass = image.ParentNode.Attributes["class"]?.Value; //Get Parent Node and identify class as "parentClass"
                 if (String.IsNullOrEmpty(src)) src = "";
                 //Sort Image issues
@@ -247,10 +261,10 @@
                         //Ignore
                     }
                 }
-                //else if (new Regex("Lesson\\d*?(.jpg|.png|.svg)", RegexOptions.IgnoreCase).IsMatch(src))
-                //{   //Check if src data is just a lesson's banner
-                //    //Ignore
-                //}
+                else if (decorative)
+                {   //Check if image is marked as decorative
+                    //Ignore
+                }
                 else if (String.IsNullOrEmpty(alt) || String.IsNullOrWhiteSpace(alt))
                 {   //Empty alt text should be manually checked for decortive qualities
                     lock (Data)
@@ -656,7 +670,7 @@
                 {
                     lock (Data)
                     {
-                        Data.Add(new PageA11yData(PageDocument.Location, "Header", "", $"Heading Level {header_number}:\n{header.InnerText}", "Header sturture out of logical order", 1, header.XPath));
+                        Data.Add(new PageA11yData(PageDocument.Location, "Header", "", $"Heading Level {header_number}:\n{header.InnerText}", "Header structure out of logical order", 1, header.XPath));
                     }
                 }
                 break;

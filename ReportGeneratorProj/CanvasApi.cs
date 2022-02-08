@@ -101,6 +101,10 @@ namespace My.CanvasApi
         public string filename { get; set; }
         public string url { get; set; }
     }
+    public class CanvasPageTitle
+    {
+        public string title { get; set; }
+    }
 
     /// <summary>
     /// Static class that is used to access canvas data
@@ -177,6 +181,21 @@ namespace My.CanvasApi
             //Returns a List of CanvasModuleItems
             var response = restClient.Execute<List<CanvasModuleItem>>(request);
             return response.Data;
+        }        
+        public static string GetLocationTitle(string url)
+        {
+            string addtional_information = "";
+            var restClient = new RestClient($"{url}?per_page=10000&access_token={token}");
+            var request = new RestRequest(Method.GET);
+            //Check for additional information
+            Match question = Regex.Match(url, @"question_num=(\d+)");
+            if (question.Success)
+            {
+                addtional_information += $" (question number {question.Groups[1]})";
+            }
+            var response = restClient.Execute<CanvasPageTitle>(request);
+            string title = response.Data.title;
+            return title + addtional_information;
         }
         public static CanvasPage GetCanvasPage(int course_id, string page_url)
         {

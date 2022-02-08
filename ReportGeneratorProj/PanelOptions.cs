@@ -23,6 +23,7 @@ namespace My
         public Dictionary<string, string> BYUOnlineHighSchoolCreds { get; set; }
         public Dictionary<string, string> ByuCred { get; set; }
         public string ReportPath { get; set; }
+        public string LogPathLocal { get; set; }
         public string PowershellScriptDir { get; set; }
         public string ExcelTemplatePath { get; set; }
         public string GoogleApi { get; set; }
