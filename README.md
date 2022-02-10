@@ -194,6 +194,35 @@ Make sure to push all changes to git so everyone editing the project can see the
 
 To update the “production” exe just change the build configuration to release (to the left of the start button in Visual Studio there is a dropdown that should show Debug, change it to Release and then rebuild project). You can only run in debugging if it is set to Debug.
 
+# Editing the Accessibility Panel Update Process
+
+As you the reader have probably deduced by now, this application does not follow any regular architecture. Honestly, I would say that the structure has no architecture. Therefore the updating process is probably different to anything you have seen. Simply, put the update process is manage via the `SetUp.ps1` powershell file. The path to `SetUp.ps1` is `M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\AccessibilitySetup\SetUp.ps1`.
+
+## How the update process runs from a local computer
+
+There are two ways a user can start the update process from their local computer.
+
+1. Run the application using the shortcut provided on the desktop.
+- `C:\Users\[USER]\Desktop\Accessibility Panel.lnk`
+2. Run the `UpdateAccessibilityTools.exe` in the `AccessibilityTools/` directory.
+  - `C:\Users\[USER]\Desktop\AccessibilityTools\UpdateAccessibilityTools.exe`
+
+### Run the application using the shortcut provided on the desktop.
+
+Updates panel
+  `UpdateAndRun.exe`
+  `RunSetUp.exe`
+  `RunSetUp.ps1`
+  `SetUp.ps1`
+Runs panel
+
+### Run the `UpdateAccessibilityTools.exe` in the `AccessibilityTools/` directory.
+
+`UpdateAccessibilityTools.exe`
+`RunSetUp.exe`
+`RunSetUp.ps1`
+`SetUp.ps1`
+
 # Known Possible Errors
 
 These are known errors that have been detected and solved for the BYU CE Accessibility Panel. For the sake of debugging an error log is created on local machines for each panel. That error log is located at `.../Desktop/AccessibilityTools/A11yPanel/Log.txt`.
