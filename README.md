@@ -209,19 +209,27 @@ There are two ways a user can start the update process from their local computer
 
 ### Run the application using the shortcut provided on the desktop.
 
-Updates panel
-  `UpdateAndRun.exe`
-  `RunSetUp.exe`
-  `RunSetUp.ps1`
-  `SetUp.ps1`
-Runs panel
+- Updates panel
+
+  - `UpdateAndRun.exe`
+
+    - `UpdateAccessibilityTools.exe`
+
+    - `RunSetUp.exe`
+
+    - `SetUp.ps1`
+
+- Runs panel
+
+  - `A11yPanel.exe`
 
 ### Run the `UpdateAccessibilityTools.exe` in the `AccessibilityTools/` directory.
 
-`UpdateAccessibilityTools.exe`
-`RunSetUp.exe`
-`RunSetUp.ps1`
-`SetUp.ps1`
+- `UpdateAccessibilityTools.exe` (local exe that runs the `RunSetUp.exe` in the source directory )
+
+- `RunSetUp.exe`(exe file of the RunSetUp.ps1 in the source directory, runs the `SetUp.ps1` file)
+
+- `SetUp.ps1` (Powershell file used for install and updating)
 
 # Known Possible Errors
 
