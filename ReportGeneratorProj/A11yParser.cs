@@ -770,124 +770,116 @@
             }
             foreach (var color in colored_element_list)
             {
-                if (color.InnerText == null || color.InnerText == string.Empty)
+
+                System.Web.UI.CssStyleCollection style = new System.Web.UI.WebControls.Panel().Style; //Get styles of element
+                style.Value = color.Attributes["style"].Value;
+                var background_color = style["background-color"];   //Grab background color
+                if (background_color == null)   //If there is no background color look at parent elements first
                 {
-                    // Skip Empty Tags
+                    var helper = color;
+                    while (helper.ParentNode != null)
+                    {
+                        helper = helper.ParentNode;
+                        System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
+                        check.Value = helper.Attributes["style"]?.Value;
+                        if (check.Value != null)
+                        {
+                            background_color = check["background-color"];
+                            if (background_color != null)
+                            {   //once we find a background-color then we can stop looking
+                                break;
+                            }
+                        }
+                    }
+                    //if its still empty set to default
+                    if (background_color == null)
+                    {
+                        //Default background color is white
+                        background_color = "#FFFFFF";
+                    }
                 }
-                else
+
+                var foreground_color = style["color"];
+                if (foreground_color == null)
                 {
-
+                    //Check parent elements for foreground color if the current did not have one
+                    var helper = color;
+                    while (helper.ParentNode != null)
+                    {
+                        helper = helper.ParentNode;
+                        System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
+                        check.Value = helper.Attributes["style"]?.Value;
+                        if (check.Value != null)
+                        {
+                            foreground_color = check["color"];
+                            if (foreground_color != null)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    //If its still empty set to default color
+                    if (foreground_color == null)
+                    {
+                        //Default text color is black
+                        foreground_color = "#000000";
+                    }
+                }
+                /////////// To reduce number of false positives / negatives the next bit looks at any elements between the current and the actual text to see if it changes
+                //////////  Often run into elements that immediately have their color overwritten and is never used
+                var check_children = color;
+                while (check_children.FirstChild != null && check_children.FirstChild.Name != "#text")
+                {   //Checks till we run into the text if there are any color changes.
+                    //May not work very well if it is something like <p style="color: base;">asdasdsa<span style="color: NewColor;">asdasd</span>asdasd<span style="color: DiffColor;">asdasd</span></p>
+                    check_children = check_children.FirstChild;
+                    System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
+                    check.Value = check_children.Attributes["style"]?.Value;
+                    if (check["color"] != null)
+                    {
+                        foreground_color = check["color"];
+                    }
+                    if (check["background-color"] != null)
+                    {
+                        background_color = check["background-color"];
+                    }
                 }
 
-                //System.Web.UI.CssStyleCollection style = new System.Web.UI.WebControls.Panel().Style; //Get styles of element
-                //style.Value = color.Attributes["style"].Value;
-                //var background_color = style["background-color"];   //Grab background color
-                //if (background_color == null)   //If there is no background color look at parent elements first
-                //{
-                //    var helper = color;
-                //    while (helper.ParentNode != null)
-                //    {
-                //        helper = helper.ParentNode;
-                //        System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
-                //        check.Value = helper.Attributes["style"]?.Value;
-                //        if (check.Value != null)
-                //        {
-                //            background_color = check["background-color"];
-                //            if (background_color != null)
-                //            {   //once we find a background-color then we can stop looking
-                //                break;
-                //            }
-                //        }
-                //    }
-                //    //if its still empty set to default
-                //    if (background_color == null)
-                //    {
-                //        //Default background color is white
-                //        background_color = "#FFFFFF";
-                //    }
-                //}
-
-                //var foreground_color = style["color"];
-                //if (foreground_color == null)
-                //{
-                //    //Check parent elements for foreground color if the current did not have one
-                //    var helper = color;
-                //    while (helper.ParentNode != null)
-                //    {
-                //        helper = helper.ParentNode;
-                //        System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
-                //        check.Value = helper.Attributes["style"]?.Value;
-                //        if (check.Value != null)
-                //        {
-                //            foreground_color = check["color"];
-                //            if (foreground_color != null)
-                //            {
-                //                break;
-                //            }
-                //        }
-                //    }
-                //    //If its still empty set to default color
-                //    if (foreground_color == null)
-                //    {
-                //        //Default text color is black
-                //        foreground_color = "#000000";
-                //    }
-                //}
-                ///////////// To reduce number of false positives / negatives the next bit looks at any elements between the current and the actual text to see if it changes
-                ////////////  Often run into elements that immediately have their color overwritten and is never used
-                //var check_children = color;
-                //while (check_children.FirstChild != null && check_children.FirstChild.Name != "#text")
-                //{   //Checks till we run into the text if there are any color changes.
-                //    //May not work very well if it is something like <p style="color: base;">asdasdsa<span style="color: NewColor;">asdasd</span>asdasd<span style="color: DiffColor;">asdasd</span></p>
-                //    check_children = check_children.FirstChild;
-                //    System.Web.UI.CssStyleCollection check = new System.Web.UI.WebControls.Panel().Style;
-                //    check.Value = check_children.Attributes["style"]?.Value;
-                //    if (check["color"] != null)
-                //    {
-                //        foreground_color = check["color"];
-                //    }
-                //    if (check["background-color"] != null)
-                //    {
-                //        background_color = check["background-color"];
-                //    }
-                //}
-
-                //if (!background_color.Contains("#"))
-                //{   //If it doesn't have a # then it is a known named color, needs to be converted to hex
-                //    //the & 0xFFFFFF cuts off the A of the ARGB
-                //    int rgb = System.Drawing.Color.FromName(background_color.FirstCharToUpper()).ToArgb() & 0xFFFFFF;
-                //    background_color = string.Format("{0:x6}", rgb);
-                //}
-                //if (!foreground_color.Contains('#'))
-                //{   //If it doesn't have a # then it is a known named color, needs to be converted to hex
-                //    int rgb = System.Drawing.Color.FromName(foreground_color.FirstCharToUpper()).ToArgb() & 0xFFFFFF;
-                //    foreground_color = string.Format("{0:x6}", rgb);
-                //}
-                ////The API doesn't like having the #
-                //foreground_color = foreground_color.Replace("#", "");
-                //background_color = background_color.Replace("#", "");
-                //var restClient = new RestClient($"https://webaim.org/resources/contrastchecker/?fcolor={foreground_color}&bcolor={background_color}&api");
-                //var request = new RestRequest(Method.GET);
-                ////Will return single color object with parameters we want
-                //var response = restClient.Execute<ColorContrast>(request).Data;
-                //var text = string.Empty;
-                ////See if we can get the inner text so we can identify the element if there was an issue found
-                //if (color.InnerText != null)
-                //{
-                //    text = "\"" + HttpUtility.HtmlDecode(color.InnerText) + "\"\n";
-                //}
-                //else continue; // if color.InnerText is null we assume this is not an issue.
-                //if (text == string.Empty || text == "\"\"")
-                //{   //if there was no text just assume it isn't an issue. Will be almost impossible to find it anyway.
-                //    continue;
-                //}
-                //if (response.AA != "pass")
-                //{   //Add it if it doesn't pass AA standards
-                //    lock (Data)
-                //    {
-                //        Data.Add(new PageA11yData(PageDocument.Location, "Color Contrast", "", $"{text}Color: {foreground_color}\nBackgroundColor: {background_color}\n{response.ToString()}", "Does not meet AA color contrast", 1, color.XPath));
-                //    }
-                //}
+                if (!background_color.Contains("#"))
+                {   //If it doesn't have a # then it is a known named color, needs to be converted to hex
+                    //the & 0xFFFFFF cuts off the A of the ARGB
+                    int rgb = System.Drawing.Color.FromName(background_color.FirstCharToUpper()).ToArgb() & 0xFFFFFF;
+                    background_color = string.Format("{0:x6}", rgb);
+                }
+                if (!foreground_color.Contains('#'))
+                {   //If it doesn't have a # then it is a known named color, needs to be converted to hex
+                    int rgb = System.Drawing.Color.FromName(foreground_color.FirstCharToUpper()).ToArgb() & 0xFFFFFF;
+                    foreground_color = string.Format("{0:x6}", rgb);
+                }
+                //The API doesn't like having the #
+                foreground_color = foreground_color.Replace("#", "");
+                background_color = background_color.Replace("#", "");
+                var restClient = new RestClient($"https://webaim.org/resources/contrastchecker/?fcolor={foreground_color}&bcolor={background_color}&api");
+                var request = new RestRequest(Method.GET);
+                //Will return single color object with parameters we want
+                var response = restClient.Execute<ColorContrast>(request).Data;
+                var text = string.Empty;
+                //See if we can get the inner text so we can identify the element if there was an issue found
+                if (color.InnerText != null)
+                {
+                    text = "\"" + HttpUtility.HtmlDecode(color.InnerText) + "\"\n";
+                }
+                else continue; // if color.InnerText is null we assume this is not an issue.
+                if (text == string.Empty || text == "\"\"")
+                {   //if there was no text just assume it isn't an issue. Will be almost impossible to find it anyway.
+                    continue;
+                }
+                if (response.AA != "pass")
+                {   //Add it if it doesn't pass AA standards
+                    lock (Data)
+                    {
+                        Data.Add(new PageA11yData(PageDocument.Location, "Color Contrast", "", $"{text}Color: {foreground_color}\nBackgroundColor: {background_color}\n{response.ToString()}", "Does not meet AA color contrast", 1, color.XPath));
+                    }
+                }
             }
         }
 
