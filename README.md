@@ -1,3 +1,7 @@
+# BYU CE Accessibility Panel
+
+[![Open in Visual Studio Code](https://img.shields.io/badge/Open%20in-Visal%20Studio%20Code-blue?style=for-the-badge&logo=visualstudiocode)](https://open.vscode.dev/byuceaccessibility/AccessibilityPanel)
+
 # How to install the Accessibility Panel on a work computer
 
 1.	Go to `M:\DESIGNER\Content Editors·ELTA\Accessibility Assistants\A11y Panel`, open the `AccessibilitySetup` folder, and run the `RunSetUp.exe` file.
