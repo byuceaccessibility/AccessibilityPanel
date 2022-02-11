@@ -116,10 +116,10 @@ END
 **[CourseDataStructures.cs](ReportGeneratorProj/CourseDataStructures.cs)**
 : translates canvas data into a usable format
 
-**[SeleniumExtensions.cs](ReportGeneratorProj/SeleniumExtentions.cs)**
+**[SeleniumExtensions.cs](ReportGeneratorProj/SeleniumExtensions.cs)**
 : Selenium - used to find media data by traversing the HTML.
 
-**[StringExtensions.cs](ReportGeneratorProj/StringExtentions.cs)**
+**[StringExtensions.cs](ReportGeneratorProj/StringExtensions.cs)**
 : Helpful String Methods. Splits strings into useful information.
 
 # A11yParser Logic
