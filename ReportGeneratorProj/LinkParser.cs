@@ -7,7 +7,7 @@
     using System.IO;
     using System.Net;
     using System.Threading.Tasks;
-    using My.StringExtentions;
+    using My.StringExtensions;
 
     public class LinkParser : RParserBase
     {

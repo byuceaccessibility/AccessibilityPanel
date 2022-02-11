@@ -215,8 +215,6 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\MediaParser.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\PanelOptions.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\RGeneratorBase.cs
-C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\SeleniumExtentions.cs
-C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\StringExtentions.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\VideoParser.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\App.config
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\A11yData.cs
@@ -310,3 +308,5 @@ C:\Users\Nate\Source\Repos\byuceaccessibility\AccessibilityPanel\WPFCommandPanel
 C:\Users\Nate\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.exe
 C:\Users\Nate\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.pdb
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\obj\Debug\WPFCommandPanel.csproj.AssemblyReference.cache
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\SeleniumExtensions.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\WPFCommandPanel\bin\Debug\StringExtensions.cs

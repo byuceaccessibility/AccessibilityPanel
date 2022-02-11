@@ -18,7 +18,7 @@ using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Data;
 using TidyManaged;
-using My.StringExtentions;
+using My.StringExtensions;
 using System.Text;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls.Primitives;

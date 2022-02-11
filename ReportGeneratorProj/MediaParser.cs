@@ -8,9 +8,9 @@
     using System.Text.RegularExpressions;
     using System.IO;
     using OpenQA.Selenium;
-    using My.SeleniumExtentions;
+    using My.SeleniumExtensions;
     using System.Management.Automation;
-    using My.StringExtentions;
+    using My.StringExtensions;
     using My.VideoParser;
     using System.Reflection;
     using Newtonsoft.Json;

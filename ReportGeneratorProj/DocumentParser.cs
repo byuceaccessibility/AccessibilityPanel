@@ -7,7 +7,7 @@
     using System.IO;
     using System.Net;
     using System.Threading.Tasks;
-    using My.StringExtentions;
+    using My.StringExtensions;
     using Newtonsoft.Json;
     using System.Text;
     using My.CanvasApi;

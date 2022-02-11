@@ -14,7 +14,7 @@
     - For example
       - ```json
         "BYUOnlineCreds":  {
-                           "BaseUri":  "https://byu.instructure.com",
+                           "BaseUri":  "https://byu.instructure.com",git
                            "Token":  "<YOUR-USER-TOKEN-GOES-HERE>"
                            },
         ```
@@ -184,7 +184,7 @@ Clone the following GitHub repository: https://github.com/byuisaccessibility/Acc
     3. In properties go to the Startup Project section
     4. Under Single startup project make sure `WPFCommandPanel` is selected
 
-6. Go into your `AccessibilityTools` directory -> A11yPanel -> copy the `options.json` there -> paste it to the GitHub respository that was cloned at the following path: `WPFCommandPanel\bin\Debug`
+6. Go into your `AccessibilityTools` directory -> A11yPanel -> copy the `options.json` there -> paste it to the GitHub repository that was cloned at the following path: `WPFCommandPanel\bin\Debug`
 7. You should now be able to build the project. 
 
 ## Possible Errors
@@ -207,9 +207,12 @@ As you the reader have probably deduced by now, this application does not follow
 There are two ways a user can start the update process from their local computer.
 
 1. Run the application using the shortcut provided on the desktop.
-- `C:\Users\[USER]\Desktop\Accessibility Panel.lnk`
-2. Run the `UpdateAccessibilityTools.exe` in the `AccessibilityTools/` directory.
-  - `C:\Users\[USER]\Desktop\AccessibilityTools\UpdateAccessibilityTools.exe`
+
+   `C:\Users\[USER]\Desktop\Accessibility Panel.lnk`
+
+1. Run the `UpdateAccessibilityTools.exe` in the `AccessibilityTools/` directory.
+
+   `C:\Users\[USER]\Desktop\AccessibilityTools\UpdateAccessibilityTools.exe`
 
 ### Run the application using the shortcut provided on the desktop.
 
@@ -231,9 +234,13 @@ There are two ways a user can start the update process from their local computer
 
 - `UpdateAccessibilityTools.exe` (local exe that runs the `RunSetUp.exe` in the source directory )
 
-- `RunSetUp.exe`(exe file of the RunSetUp.ps1 in the source directory, runs the `SetUp.ps1` file)
+- `RunSetUp.exe` (exe file of the RunSetUp.ps1 in the source directory, runs the `SetUp.ps1` file)
 
 - `SetUp.ps1` (Powershell file used for install and updating)
+
+## Editing the Update Process
+
+The Update process is essentially a reinstall process that makes changes to the panel, but leaves user and local computer specific data alone. This is managed by the file `SetUp.ps1` with the file path of `M:\DESIGNER\Content EditorsELTA\Accessibility Assistants\A11y Panel\AccessibilitySetup\SetUp.ps1`. This is a powershell script file. For information about syntax or how a powershell script file works, go to [Microsoft Powershell Documentation](https://docs.microsoft.com/en-us/powershell/).
 
 # Known Possible Errors
 

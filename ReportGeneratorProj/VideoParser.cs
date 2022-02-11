@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using My.StringExtentions;
+using My.StringExtensions;
 using System.IO;
 using HtmlAgilityPack;
 using RestSharp;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-using My.SeleniumExtentions;
+using My.SeleniumExtensions;
 using System.Xml;
 using Google.Apis.Services;
 using Google.Apis.YouTube.v3;

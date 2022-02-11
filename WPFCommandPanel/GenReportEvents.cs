@@ -177,8 +177,8 @@ namespace WPFCommandPanel
                     };
                     logger.Report($"Finished parsing pages, creating file");
                 });
-                var file_name_extention = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
-                var file_path = MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_extention}.xlsx";
+                var file_name_Extension = ((CanvasApi.CurrentDomain == "Directory") ? System.IO.Path.GetPathRoot(text) + "Drive" : CanvasApi.CurrentDomain).Replace(":\\", "");
+                var file_path = MainWindow.panelOptions.ReportPath + $"\\ARC_{course.CourseCode.Replace(",", "").Replace(":", "")}_{file_name_Extension}.xlsx";
                 CreateExcelReport GenReport = new CreateExcelReport(file_path);
                 file_path = GenReport.CreateReport(ParseForA11y.Data, ParseForMedia.Data, ParseForLinks?.Data, ParseForFiles.Data);
                 s.Stop();

@@ -6,7 +6,7 @@
     using System.Text.RegularExpressions;
     using OfficeOpenXml;
     using System.IO;
-    using My.StringExtentions;
+    using My.StringExtensions;
     using Newtonsoft.Json;
     using System.Reflection;
     using My.CanvasApi;

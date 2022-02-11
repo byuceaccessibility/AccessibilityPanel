@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace My.StringExtentions
+namespace My.StringExtensions
 {
-    public static class StringExtentions
+    public static class StringExtensions
     {   //Helpful string extension methods
         public static string[] CleanSplit(this string ToSplit, string seperator)
         {   //Splits a string and gets rid of any empty, null or whitespace only items.

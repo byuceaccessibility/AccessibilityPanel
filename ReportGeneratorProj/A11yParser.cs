@@ -8,11 +8,11 @@
     using RestSharp;
     using System.Text.RegularExpressions;
     using System.Web;
-    using My.StringExtentions;
+    using My.StringExtensions;
     using My.VideoParser;
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Support.UI;
-    using My.SeleniumExtentions;
+    using My.SeleniumExtensions;
 
     /// <summary>
     /// Object to receive color contrast response

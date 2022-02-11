@@ -135,8 +135,6 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\De
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\MediaParser.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\PanelOptions.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\RGeneratorBase.cs
-C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\SeleniumExtentions.cs
-C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\StringExtentions.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\VideoParser.cs
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\App.config
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\ReportGenerators.exe.config
@@ -282,3 +280,5 @@ C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\De
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\System.ValueTuple.dll
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\Microsoft.Toolkit.Uwp.Notifications.pdb
 C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\obj\Debug\ReportGenerators.exe.config
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\SeleniumExtensions.cs
+C:\Users\nltingey\Documents\GitHub\AccessibilityPanel\ReportGeneratorProj\bin\Debug\StringExtensions.cs

@@ -4,9 +4,9 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
-namespace My.SeleniumExtentions
+namespace My.SeleniumExtensions
 {
-    public static class SeleniumExtentions
+    public static class SeleniumExtensions
     {   //Class to contain any extenstions to selenium
         public static IWebElement UntilElementIsVisible(this WebDriverWait wait, By locator)
         {   //Replace constantly used code that I was writing
